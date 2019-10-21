@@ -1,0 +1,47 @@
+footer
+{
+	position:absolute;
+	bottom:0;
+	background: #3a343b;
+	height: 7%;
+	width:100%;
+	border:1px black solid;
+}
+
+ul
+{
+	list-style-type:none;
+	display:flex;
+	width:100%;
+}
+
+li
+{
+	font-size:2.5vh;
+	overflow:hidden;
+	height:100%;
+	overflow:hidden;
+}
+
+footer ul li
+{
+	color:white;
+	padding-top:1%;
+	padding-bottom:1%;
+}
+footer ul li:nth-child(1)
+{
+	width:10%;
+	text-align:center;
+}
+footer ul li:nth-child(2)
+{
+	width:10%;
+	text-align:center;
+}
+footer ul li:nth-child(3)
+{
+	width:80%;
+	text-align:right;
+	padding-right:3%;
+}

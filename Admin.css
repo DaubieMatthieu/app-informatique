@@ -1,0 +1,77 @@
+* {padding: 0; margin: 0;}
+html, body {
+   height: 100%;
+   overflow:hidden;
+}
+
+section
+{
+	height:85%;
+	position:absolute;
+	top:10%;
+	width:100%;
+}
+
+form
+{
+	margin:auto;
+	text-align:center;
+	border: 1px black solid;
+	border-radius:20px;
+	height:30px;
+	width:570px;
+	padding-bottom:2px;
+	padding-top:2px;
+}
+button
+{
+	position:relative;
+	top:5px;
+	background-image: url('Loupe.png');
+	background-repeat: no-repeat;
+	width: 20px;
+	height: 20px;
+	padding:0px;
+	border:none;
+}
+input
+{
+	border:0px;
+	text-align:center;
+	padding:0px;
+	margin:0px;
+	box-shadow:none;
+	font-size:15px;
+}
+
+h1
+{
+	text-align:center;
+	font-size:30px;
+}
+
+section table
+{
+	border-collapse:collapse;
+	width:83%;
+	margin:auto;
+	border: 1px gray solid;
+}
+section table th
+{
+	background-color:#6a606c;
+	color:white;
+	border: 1px gray solid;
+}
+section table td
+{
+	text-align:center;
+	border-left: 1px gray solid;
+	border-right: 1px gray solid;
+}
+section table th, section table td
+{
+	padding-top:5px;
+	padding-bottom:5px;
+	font-size:20px;
+}
