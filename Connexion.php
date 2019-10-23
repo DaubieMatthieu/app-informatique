@@ -11,18 +11,30 @@
 		<?php include("header.php"); ?>
 
 		<section>
-			</br></br></br></br></br></br><h1> Connexion </h1></br></br></br></br>
-			<form method="post" action="Connexion.php">
-				<div id="conteneur">
-					<input type="email" name="Login" placeholder="Entrez votre Login" size="32" maxlength="32" required autofocus />
-					<input type="Password" name="Mdp" placeholder="Entrez votre mot de passe" size="32" minlength="5" maxlength="32" required />
-				</div>
-				</br></br><input id="Submit" type="Submit" Value="Se connecter" />
-				</br><a href="Inscription.html">S'inscrire</a>
-			</form>
+
+			<div id="conteneur">
+					<form action="check.php" method="POST">
+							<h1>Connexion</h1>
+
+							<label><b>Nom d'utilisateur (Email)</b></label>
+							<input type="email" placeholder="Entrer le nom d'utilisateur" name="adresse_mail" required>
+
+							<label><b>Mot de passe</b></label>
+							<input type="password" placeholder="Entrer le mot de passe" name="mot_de_passe" required>
+
+							<input type="submit" value='Login' >
+
+							<?php
+							if(isset($_GET['erreur'])){
+									$err = $_GET['erreur'];
+									if($err==1 || $err==2)
+											echo "<p style='color:red'>Utilisateur ou mot de passe incorrect</p>";
+							}
+							?>
+					</form>
+			</div>
 		</section>
 
-		
 		<?php include("footer.php"); ?>
 
 
