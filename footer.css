@@ -1,11 +1,11 @@
 footer
 {
-	position:absolute;
+	position:fixed;
 	bottom:0;
 	background: #3a343b;
-	height: 7%;
+	height: 52px;
 	width:100%;
-	border:1px black solid;
+	border-top:1px black solid;
 }
 
 footer ul
@@ -17,31 +17,26 @@ footer ul
 
 footer ul li
 {
-
-}
-
-footer ul li
-{
-	font-size:2.5vh;
-	overflow:hidden;
+	font-size:20px;
 	height:100%;
 	color:white;
-	padding-top:1%;
-	padding-bottom:1%;
+	padding-top:15px;
+	padding-bottom:15px;
 }
+
 footer ul li:nth-child(1)
 {
-	width:10%;
+	width:15%;
 	text-align:center;
 }
 footer ul li:nth-child(2)
 {
-	width:10%;
+	width:20%;
 	text-align:center;
 }
 footer ul li:nth-child(3)
 {
-	width:80%;
+	width:65%;
 	text-align:right;
 	padding-right:3%;
 }

@@ -8,22 +8,34 @@
 
 	<body>
 
-		<?php include("header.php"); ?>
+		<?php include("header_logged_out.php"); ?>
 
 		<section>
-			<h1> S'inscrire </h1>
-			<form method="post" action="Inscription.php">
-				<div id="conteneur">
-					<input type="text" name="Nom" placeholder="Entrez votre nom" size="32" maxlength="32" autofocus required />
-					<input type="text" name="Prénom" placeholder="Entrez votre prénom" size="32" maxlength="32" required />
-					<input type="email" name="Mail" placeholder="Entrez votre mail" size="32" maxlength="32" required />
-					<input type="Password" name="Mdp" placeholder="Entrez votre mot de passe" size="32" minlength="5" maxlength="32" required />
-				</div>
-				<input id="Submit" type="Submit" Value="Valider" />
-			</form>
+
+			<div id="conteneur">
+					<form action="signup.php" method="post">
+							<h1>Inscription</h1>
+
+							<label><b>Nom</b></label>
+							<input type="text" placeholder="Entrer votre nom" name="nom" required>
+
+							<label><b>Prénom</b></label>
+							<input type="text" placeholder="Entrer votre prénom" name="prenom" required>
+
+							<label><b>Email</b></label>
+							<input type="email" placeholder="Entrer votre adresse mail" name="adresse_mail" required>
+
+							<label><b>Mot de passe</b></label>
+							<input type="password" placeholder="Entrer votre mot de passe" name="mot_de_passe" minlength="5" required>
+
+							<input type="submit" value='Valider' >
+
+					</form>
+			</div>
 		</section>
 
 		<?php include("footer.php"); ?>
+
 
 	</body>
 </html>
