@@ -2,13 +2,13 @@
 <html>
 	<head>
 		<meta charset="utf-8" />
-		<link rel="stylesheet" href="Inscription.css" />
+		<link rel="stylesheet" href="../../public/css/loggedout/Inscription.css" />
 		<title> Inscription </title>
 	</head>
 
 	<body>
 
-		<?php include("header_logged_out.php"); ?>
+		<?php include("../headerfooter/Header_logged_out.php"); ?>
 
 		<section>
 
@@ -34,7 +34,7 @@
 			</div>
 		</section>
 
-		<?php include("footer.php"); ?>
+		<?php include("../headerfooter/footer.php"); ?>
 
 
 	</body>

@@ -2,25 +2,22 @@
 <html>
 	<head>
 		<meta charset="utf-8" />
-		<link rel="stylesheet" href="Admin.css" />
+		<link rel="stylesheet" href="../../public/css/accueil/Accueil_admin.css" />
 		<title> Gérer les utilisateurs </title>
 	</head>
 
 	<body>
 
-		<?php include("header.php"); ?>
+		<?php include("../headerfooter/Header_logged_in.php"); ?>
 
 		<section>
-			</br></br></br></br><h1> Gérer les utilisateurs </h1></br></br>
 			<nav>
-				<form method="post" action="traitement.php">
-					<p>
-						<input type="search" name="search" placeholder="Rechercher un utilisateur" size="64" maxlength="64"/>
-						<button type=‘submit‘></button>
-					</p>
+				<h1> Gérer les utilisateurs </h1></br>
+				<form method="post" action="Accueil_admin.php">
+					<input type="search" name="search" placeholder="Rechercher un utilisateur" size="64" maxlength="64"/>
+					<button type=‘submit‘></button>
 				</form>
 			</nav>
-			</br></br></br></br>
 			<table>
 				<tr>
 					<th>Nom</th>
@@ -66,7 +63,7 @@
 			</table>
 		</section>
 
-		<?php include("footer.php"); ?>
+		<?php include("../headerfooter/Footer.php"); ?>
 
 	</body>
 </html>

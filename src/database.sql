@@ -1,4 +1,6 @@
-CREATE DATABASE IF NOT EXISTS infinite_sense
+CREATE DATABASE IF NOT EXISTS infinite_sense;
+
+use infinite_sense;
 
 CREATE TABLE IF NOT EXISTS utilisateur(
 	id_utilisateur INT AUTO_INCREMENT PRIMARY KEY,

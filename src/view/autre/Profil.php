@@ -1,31 +1,19 @@
-<?php
-//En attendant que la BDD et l'authentification fonctionnent, on utilise une session fictive
-session_start();
-
-$_SESSION['nom'] = 'idk';
-$_SESSION['prenom'] = 'Adibou';
-$_SESSION['adresse_mail'] = 'adibou.idk@society';
-$_SESSION['mot_de_passe'] = 'whocares';
-$_SESSION['role'] = 'Utilisateur';
-?>
-
-
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="utf-8" />
-		<link rel="stylesheet" href="Inscription.css" />
+		<link rel="stylesheet" href="../../public/css/Profil.css" />
 		<title> Profil </title>
 	</head>
 
 	<body>
 
-		<?php include("header_logged_in.php"); ?>
+		<?php include("../headerfooter/Header_logged_in.php"); ?>
 
 		<section>
 
 			<div id="conteneur">
-					<form action="change.php" method="post">
+					<form action="../../controller/change.php" method="post">
 							<h1>Profil</h1>
 
 							<label><b>Nom</b></label>
@@ -46,7 +34,7 @@ $_SESSION['role'] = 'Utilisateur';
 			</div>
 		</section>
 
-		<?php include("footer.php"); ?>
+		<?php include("../headerfooter/footer.php"); ?>
 
 
 	</body>

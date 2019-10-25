@@ -1,18 +1,27 @@
 * {padding: 0; margin: 0;}
-html, body {
-   height: 100%;
-   overflow:hidden;
-}
 
 section
 {
-	height:85%;
-	position:absolute;
-	top:10%;
+	position:relative;
+	top:75px;
 	width:100%;
 }
 
-form
+section nav {
+  position:relative;
+	top:0;
+  margin:0 auto;
+  margin-top:5%;
+  margin-bottom:5%;
+}
+
+section nav h1
+{
+	text-align:center;
+	font-size:30px;
+}
+
+section nav form
 {
 	margin:auto;
 	text-align:center;
@@ -23,18 +32,8 @@ form
 	padding-bottom:2px;
 	padding-top:2px;
 }
-button
-{
-	position:relative;
-	top:5px;
-	background-image: url('Loupe.png');
-	background-repeat: no-repeat;
-	width: 20px;
-	height: 20px;
-	padding:0px;
-	border:none;
-}
-input
+
+section nav form input
 {
 	border:0px;
 	text-align:center;
@@ -44,10 +43,16 @@ input
 	font-size:15px;
 }
 
-h1
+section nav form button
 {
-	text-align:center;
-	font-size:30px;
+	position:relative;
+	top:5px;
+	background-image: url('../../images/Loupe.png');
+	background-repeat: no-repeat;
+	width: 20px;
+	height: 20px;
+	padding:0px;
+	border:none;
 }
 
 section table

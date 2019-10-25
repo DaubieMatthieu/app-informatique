@@ -1,0 +1,120 @@
+header
+{
+	min-width: 500px;
+	background:#8a45e6;
+	position:fixed;
+	top:0;
+	height: 74px;
+	width:100%;
+	border-bottom:1px black solid;
+}
+
+header ul {
+margin: 0px;
+padding: 0px;
+list-style-type: none;
+}
+
+header > ul
+{
+	display:flex;
+	width:100%;
+}
+
+header > ul > li
+{
+	font-size:20px;
+	text-align:center;
+	position: absolute;
+	color:white;
+	padding-top:26px;
+	padding-bottom:26px;
+}
+
+header a
+{
+	transition: all 0.2s;
+	font-size: 20px;
+	color:white;
+	text-decoration: none;
+	padding:5px;
+}
+
+header a:hover
+{
+	color:#00ff91;
+}
+
+header > ul > li:nth-child(1)
+{
+	left:5%;
+}
+
+header > ul > li:nth-child(2)
+{
+	left:30%;
+}
+header > ul > li:nth-child(3)
+{
+	right:3%;
+}
+
+header > ul > li:nth-child(3):hover
+{
+	cursor: pointer;
+}
+
+#deroulant ul
+{
+	position:absolute;
+  right:0;
+  top:64px;
+	display:none;
+	background-color: white;
+	border: 1px grey solid;
+  float: left;
+  padding-right: 20px;
+  padding-left: 20px;
+  line-height: 200%;
+  border-radius: 2px;
+  color:black
+}
+
+#deroulant ul li
+{
+    text-align: left;
+    position: relative;
+		display: block;
+}
+
+#deroulant button {
+    font-size: 20px;
+    background-color: #8a45e6;
+    color: white;
+    padding: 14px 20px;
+    margin: -13px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+		transition: all 0.2s;
+}
+
+#deroulant button:hover {
+  background-color: white;
+  color:#8a45e6;
+}
+
+#deroulant ul a
+{
+	display:block;
+	text-decoration: none;
+	color:black;
+}
+
+#deroulant li:hover ul {
+  display: block ;
+}
+
+#deroulant li:hover ul li a:hover {
+  color:#00ff91;
+}
