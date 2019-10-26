@@ -20,7 +20,7 @@ session_start();
 			<li><a href="../../Index.php">InfiniteSense</a></li>
 			<li><a href="../forum/Forum.php">Forum</a></li>
 			<li><button type="button"><?php echo $role;?>
-				<ul id="derouler">
+				<ul>
 					<li><a href="../autre/Profil.php">Profil</a></li>
 					<li><a href="../../controller/logout.php">Déconnexion</a></li>
 				</ul>

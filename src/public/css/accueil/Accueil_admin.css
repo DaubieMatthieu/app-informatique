@@ -45,6 +45,7 @@ section nav form input
 
 section nav form button
 {
+	outline: none;
 	position:relative;
 	top:5px;
 	background-image: url('../../images/Loupe.png');

@@ -17,7 +17,7 @@
 		<section>
 
 			<div id="conteneur">
-				<form action="../../controller/signin.php" method="post">
+				<form action="../../controller/login.php" method="post">
 						<h1>Connexion</h1>
 						</br>
 						<label><b>Nom d'utilisateur (Email)</b></label>
@@ -31,8 +31,14 @@
 							<?php
 							if(isset($_GET['erreur'])){
 									$err = $_GET['erreur'];
-									if($err==1 || $err==2)
-											echo "<p style='color:red'>Utilisateur ou mot de passe incorrect</p>";
+									if($err==0) {
+											echo "<p style='color:red'>Echec de la connexion à la base de donnée</p>";}
+									if($err==1) {
+											echo "<p style='color:red'>Erreur serveur 1</p>";}
+									if($err==2) {
+											echo "<p style='color:red'>Adresse mail ou mot de passe incorrect</p>";}
+									if($err==3) {
+											echo "<p style='color:red'>Donnée(s) manquante(s)</p>";}
 							}
 							?>
 

@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="utf-8" />
-		<link rel="stylesheet" href="../../public/css/Profil.css" />
+		<link rel="stylesheet" href="../../public/css/autre/Profil.css" />
 		<title> Profil </title>
 	</head>
 

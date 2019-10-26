@@ -41,6 +41,7 @@ input[type=email], input[type=password] {
 }
 
 input[type=submit] {
+    outline: none;
     background-color: #59adde;
     color: white;
     padding: 14px 20px;

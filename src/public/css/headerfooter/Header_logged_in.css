@@ -4,6 +4,7 @@ header
 	background:#8a45e6;
 	position:fixed;
 	top:0;
+	z-index: 1;
 	height: 74px;
 	width:100%;
 	border-bottom:1px black solid;
@@ -88,6 +89,7 @@ header > ul > li:nth-child(3):hover
 }
 
 #deroulant button {
+		outline: none;
     font-size: 20px;
     background-color: #8a45e6;
     color: white;

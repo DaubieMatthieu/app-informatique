@@ -11,7 +11,7 @@ section
 section #conteneur{
     width:400px;
     margin:0 auto;
-    margin-top:5%;
+    margin-top:4%;
     margin-bottom:5%;
 }
 
@@ -40,6 +40,7 @@ section input[type=text], input[type=email], input[type=password] {
 }
 
 section input[type=submit] {
+		outline: none;
     background-color: #59adde;
     color: white;
     padding: 14px 20px;
