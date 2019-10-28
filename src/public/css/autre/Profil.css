@@ -30,6 +30,14 @@ section form {
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 
+section input[type=email] + p{
+	display: none;
+}
+
+section input[type=email]:focus + p{
+	display: block;
+}
+
 section input[type=text], input[type=email], input[type=password] {
     width: 100%;
     padding: 12px 20px;

@@ -57,7 +57,7 @@ if(isset($_POST['adresse_mail']) && isset($_POST['mot_de_passe']))
 }
 else
 {
-   header('Location: ../view/loggedout/Connexion.php');
+   header('Location: ../view/loggedout/Connexion.php?erreur=4'); //echec de l'envoi du formulaire
 }
 mysqli_close($db); // fermer la connexion
 ?>

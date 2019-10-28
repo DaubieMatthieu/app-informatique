@@ -53,11 +53,11 @@ if(isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['adresse_mail
     }
     $check->closeCursor();
   } else {
-     header('Location: ../view/loggedout/Inscription.php?erreur=3'); // donée(s) manquante(s)
+     header('Location: ../view/loggedout/Inscription.php?erreur=3'); // donnée(s) manquante(s)
   }
 
 } else {
-   header('Location: ../view/loggedout/Connexion.php');
+   header('Location: ../view/loggedout/Connexion.php?erreur=4'); //echec de l'envoi du formulaire
 }
 
 mysqli_close($db);

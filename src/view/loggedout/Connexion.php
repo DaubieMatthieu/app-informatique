@@ -39,6 +39,8 @@
 											echo "<p style='color:red'>Adresse mail ou mot de passe incorrect</p>";}
 									if($err==3) {
 											echo "<p style='color:red'>Donnée(s) manquante(s)</p>";}
+									if($err==4) {
+											echo "<p style='color:red'>Echec de l'envoi du formulaire</p>";}
 							}
 							?>
 
