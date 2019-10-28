@@ -12,7 +12,11 @@ header
 
 header ul
 {
-	list-style-type:none;
+	list-style-type: none;
+}
+
+header > ul
+{
 	display:flex;
 	width:100%;
 }

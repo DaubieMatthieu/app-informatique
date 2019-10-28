@@ -10,9 +10,18 @@ session_start();
 	</head>
 
 	<?php
-		if ($_SESSION['role']==='A') {$role="Administrateur";}
-		if ($_SESSION['role']==='G') {$role="Gestionnaire";}
-		if ($_SESSION['role']==='U') {$role="Utilisateur";}
+		if ($_SESSION['role']==='A') {
+			$role="Administrateur";
+			$accueil="../accueil/Accueil_admin.php";
+		}
+		if ($_SESSION['role']==='G') {
+			$role="Gestionnaire";
+			$accueil="../accueil/Accueil_gestionnaire.php";
+		}
+		if ($_SESSION['role']==='U') {
+			$role="Utilisateur";
+			$accueil="../accueil/Accueil_utilisateur.php";
+		}
 	?>
 
 	<header>
@@ -21,10 +30,11 @@ session_start();
 			<li><a href="../forum/Forum.php">Forum</a></li>
 			<li><?php echo $role;?>
 				<ul>
-					<li><a href="../autre/Profil.php">Profil</a></li>
+					<li><a href=<?php echo $accueil;?>>Accueil</a></li>
 					<li><a href="../../controller/logout.php">Déconnexion</a></li>
 				</ul>
 			</li>
 		</ul>
 	</header>
+
 </html>

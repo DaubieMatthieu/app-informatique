@@ -11,7 +11,7 @@ if(isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['adresse_mail
 
   try
   {
-    $db = new PDO('mysql:host=localhost;dbname=infinite_sense', $db_username, $db_password, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION ));
+    $db = new PDO('mysql:host='.$db_host.';dbname='.$db_name, $db_username, $db_password, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION ));
   } catch (Exception $e)
   {
     header('Location:../view/loggedout/Inscription.php?erreur=0');

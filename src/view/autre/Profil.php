@@ -8,12 +8,12 @@
 
 	<body>
 
-		<?php include("../headerfooter/Header_logged_in.php"); ?>
+		<?php include("../headerfooter/Header_logged_in_profil.php"); ?>
 
 		<section>
 
 			<div id="conteneur">
-					<form action="../../controller/user_change_self.php" method="post">
+					<form action="../../controller/user_edit_self.php" method="post">
 							<h1>Profil</h1>
 
 							<label><b>Nom</b></label>

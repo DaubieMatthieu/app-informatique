@@ -10,7 +10,7 @@ if(isset($_POST['adresse_mail']) && isset($_POST['mot_de_passe']))
     $db_host     = 'localhost';
     try
     {
-      $db = new PDO('mysql:host=localhost;dbname=infinite_sense', $db_username, $db_password, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION ));
+      $db = new PDO('mysql:host='.$db_host.';dbname='.$db_name, $db_username, $db_password, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION ));
     } catch (Exception $e)
     {
       header('Location:../view/loggedout/Connexion.php?erreur=0');
