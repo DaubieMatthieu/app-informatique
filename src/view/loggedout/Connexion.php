@@ -14,12 +14,18 @@
 		include("../headerfooter/Header_logged_out.php");
 		?>
 
-		<section>
+		<!--section messages serveur-->
 
+		<?php include('../headerfooter/Message_serveur.php');?>
+
+		<!--formulaire Inscription-->
+
+		<section>
 			<div id="conteneur">
 				<form action="../../controller/login.php" method="post">
-						<h1>Connexion</h1>
-						</br>
+
+						<h1>Connexion</h1></br>
+
 						<label><b>Nom d'utilisateur (Email)</b></label>
 						<input type="email" placeholder="Entrer le nom d'utilisateur" name="adresse_mail" required>
 
@@ -27,22 +33,6 @@
 						<input type="password" placeholder="Entrer le mot de passe" name="mot_de_passe" required>
 
 						<input type="submit" value='Se connecter' >
-
-							<?php
-							if(isset($_GET['erreur'])){
-									$err = $_GET['erreur'];
-									if($err==0) {
-											echo "<p style='color:red'>Echec de la connexion à la base de donnée</p>";}
-									if($err==1) {
-											echo "<p style='color:red'>Erreur serveur 1</p>";}
-									if($err==2) {
-											echo "<p style='color:red'>Adresse mail ou mot de passe incorrect</p>";}
-									if($err==3) {
-											echo "<p style='color:red'>Donnée(s) manquante(s)</p>";}
-									if($err==4) {
-											echo "<p style='color:red'>Echec de l'envoi du formulaire</p>";}
-							}
-							?>
 
 						</br><a href="Inscription.php">S'inscrire</a>
 

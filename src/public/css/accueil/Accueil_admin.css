@@ -64,7 +64,8 @@ section nav form #search
 
 #tableau
 {
-	overflow-y: scroll;
+	position:relative;
+	overflow-y: auto;
 	height: 300px;
 	width: 83%;
 	margin: auto;
@@ -130,13 +131,186 @@ section table tr th:nth-child(5)
 	width: 10%;
 }
 
+section table tr > *:nth-child(6) {
+  display: none;
+}
 
-section table .delete
+
+section table .delete_button
 {
 	background-image: url('../../images/delete.jpg');
 }
 
-section table .edit
+section table .edit_button
 {
 	background-image: url('../../images/edit.png');
+}
+
+:root {
+  --cancel_color: #ff476f;
+  --delete_color: #59adde;
+}
+
+/*fomulaire de suppression d'utilisateur*/
+
+#delete_form {
+	width: 100%;
+	height:100%;
+	z-index:2;
+	position:absolute;
+	top:0;
+	bottom:0;
+	left: 0;
+	right: 0;
+	margin: auto;
+	display: flex;
+	visibility: hidden;
+	opacity: 0;
+  transition: visibility 0.3s, opacity 0.3s linear;
+	background-color:rgba(255,255,255,0.5);
+}
+
+#delete_form form {
+	position:relative;
+	margin:auto;
+  width:400px;
+  padding: 29px;
+  border: 1px solid #f1f1f1;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+	background-color: white;
+}
+
+#delete_form h1{
+  width: 38%;
+  margin: 0 auto;
+  padding-bottom: 10px;
+  text-align: center;
+}
+
+#delete_form label {
+  display: inline-block;
+  width:120px;
+  margin-left:100px;
+}
+
+#delete_form input[type=text], #delete_form input[type=email], #delete_form input[type=number]{
+    display: inline-block;
+    margin: 8px 0;
+    border: 0;
+    background-color: inherit;
+}
+
+#delete_form input[type=submit], #delete_form input[type=button]{
+		outline: none;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 2px;
+    border: none;
+    cursor: pointer;
+    width: 196px;
+    border: 1px solid white;
+}
+
+#delete_form input[type=button]#cancel {
+  background-color: var(--cancel_color);
+}
+
+#delete_form input[type=button]#cancel:hover {
+  background-color: white;
+  color: var(--cancel_color);
+  border-color: var(--cancel_color);
+}
+
+#delete_form input[type=submit]#confirm {
+  background-color: var(--delete_color);
+}
+
+#delete_form input[type=submit]#confirm:hover {
+    background-color: white;
+    color: var(--delete_color);
+    border-color: var(--delete_color);
+}
+
+/*fomulaire d'edition d'utilisateur*/
+
+#edit_form {
+	width: 100%;
+	height:100%;
+	z-index:2;
+	position:absolute;
+	top:0;
+	bottom:0;
+	left: 0;
+	right: 0;
+	margin: auto;
+	display: flex;
+	visibility: hidden;
+	opacity: 0;
+  transition: visibility 0.3s, opacity 0.3s linear;
+	background-color:rgba(255,255,255,0.5);
+}
+
+#edit_form form {
+	position:relative;
+	margin:auto;
+  width:400px;
+  padding: 29px;
+  border: 1px solid #f1f1f1;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+	background-color: white;
+}
+
+#edit_form h1{
+  width: 38%;
+  margin: 0 auto;
+  padding-bottom: 10px;
+  text-align: center;
+}
+
+#edit_form input[type=text], #edit_form input[type=email], #edit_form input[type=number], #edit_form select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+#edit_form input[type=number] + p{
+	display: none;
+}
+
+#edit_form input[type=number]:focus + p{
+	display: block;
+}
+
+#edit_form input[type=submit], #edit_form input[type=button]{
+		outline: none;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 2px;
+    border: none;
+    cursor: pointer;
+    width: 196px;
+    border: 1px solid white;
+}
+
+#edit_form input[type=button]#cancel {
+  background-color: var(--cancel_color);
+}
+
+#edit_form input[type=button]#cancel:hover {
+  background-color: white;
+  color: var(--cancel_color);
+  border-color: var(--cancel_color);
+}
+
+#edit_form input[type=submit]#confirm {
+  background-color: var(--delete_color);
+}
+
+#edit_form input[type=submit]#confirm:hover {
+    background-color: white;
+    color: var(--delete_color);
+    border-color: var(--delete_color);
 }

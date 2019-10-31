@@ -2,7 +2,8 @@
 <html>
 	<head>
 		<meta charset="utf-8" />
-		<link rel="stylesheet" href="../../public/css/accueil/Accueil_admin.css" />
+		<link rel="stylesheet" href="../../public/css/accueil/Accueil_admin.css">
+		<script src="../../public/js/accueil/Accueil_admin.js"></script>
 		<title> Gérer les utilisateurs </title>
 	</head>
 
@@ -10,7 +11,16 @@
 
 		<?php include("../headerfooter/Header_logged_in.php"); ?>
 
+		<!--section messages serveur-->
+
+		<?php include('../headerfooter/Message_serveur.php');?>
+
+		<!--section gérer les utilisateurs-->
+
 		<section>
+
+			<!--section recherche utilisateur-->
+
 			<nav>
 				<h1> Gérer les utilisateurs </h1></br>
 				<form method="post" action="Accueil_admin.php">
@@ -18,6 +28,8 @@
 					<button type="submit" id='search'></button>
 				</form>
 			</nav>
+
+			<!--section affichage tableau des utilisateurs-->
 
 			<?php
 
@@ -28,79 +40,143 @@
 			try
 			{
 				$db = new PDO('mysql:host='.$db_host.';dbname='.$db_name, $db_username, $db_password, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION ));
-
-				try {
-					if (isset($_POST['search'])) {
-						$search=$_POST['search'];
-						$keywords=explode(' ', $search);
-						$req = "SELECT * FROM utilisateur WHERE 0";
-						foreach($keywords as $keyword) {
-							$req .= " OR concat(nom,prenom,adresse_mail) LIKE '%$keyword%'";
-						}
-					} else {
-						$req = "SELECT * FROM utilisateur";
-					}
-
-					$rep = $db->query($req);
-
-					if ($rep->rowCount()!=0)
-					{
-						?>
-						<div id="tableau">
-						<table>
-							<tr>
-								<th>Nom</th>
-								<th>Prénom</th>
-								<th>Email</th>
-								<th>Type d'utilisateur</th>
-								<th>Action</th>
-							</tr>
-							<?php
-            	while ($user=$rep->fetch()) {
-							?>
-				        <tr>
-			            <td><?php echo $user['nom']; ?></td>
-			            <td><?php echo $user['prenom']; ?></td>
-			            <td><?php echo $user['adresse_mail']; ?></td>
-									<td>
-										<?php
-										$role=$user['role'];
-										if ($role==='A') {echo 'Administrateur';}
-										if ($role==='G') {echo 'Gestionnaire';}
-										if ($role==='U') {echo 'Utilisateur';}
-										?>
-									</td>
-									<td>
-										<?php
-										if ($role!='A') {?>
-											<div class="table_button">
-												<button type='button' class='delete'></button>
-												<button type='button' class='edit'></button>
-											</div>
-										<?php
-									}
-									?>
-									</td>
-								</tr>
-            	<?php
-							}
-							?>
-						</table>
-						</div>
-						<?php
-					} else {
-						echo "<p style='color:orange;text-align:center;'>Aucun utilisateur trouvé</p>";
-					}
-				} catch (Exception $e)
-				{
-					echo "<p style='color:red'>Erreur serveur</p>";
-				}
 			} catch (Exception $e) {
-				echo "<p style='color:red'>Connexion à la base de donnée impossible</p>";
+				?><script> show_message('Connexion à la base de donnée impossible','red'); </script><?php
+				exit;
+			}
+
+			try {
+				if (isset($_POST['search'])) {
+					$search=$_POST['search'];
+					$keywords=explode(' ', $search);
+					$req = "SELECT * FROM utilisateur WHERE 0";
+					foreach($keywords as $keyword) {
+						$req .= " OR concat(nom,prenom,adresse_mail) LIKE '%$keyword%'";
+					}
+				} else {
+					$req = "SELECT * FROM utilisateur";
+				}
+				$rep = $db->query($req);
+
+			} catch (Exception $e)
+			{
+				?><script type="text/javascript"> show_message('Erreur serveur','red'); </script><?php
+				exit;
+			}
+
+			if ($rep->rowCount()==0)
+			{
+				?><script type="text/javascript"> show_message('Aucun utilisateur trouvé','orange'); </script><?php
+			} else {
+			?>
+
+				<div id="tableau">
+					<table>
+						<tr>
+							<th>Nom</th>
+							<th>Prénom</th>
+							<th>Email</th>
+							<th>Type d'utilisateur</th>
+							<th>Action</th>
+							<th>id</th>
+						</tr>
+						<?php
+						$i=1;
+		      	while ($user=$rep->fetch()) {
+						?>
+			        <tr>
+		            <td><?php echo $user['nom']; ?></td>
+		            <td><?php echo $user['prenom']; ?></td>
+		            <td><?php echo $user['adresse_mail']; ?></td>
+								<?php
+								if ($user['role']==='A') {$role='Administrateur';}
+								if ($user['role']==='G') {$role='Gestionnaire';}
+								if ($user['role']==='U') {$role='Utilisateur';}
+								?>
+								<td><?php echo $role; ?></td>
+								<td>
+									<?php
+									if ($role!='Administrateur') {?>
+										<div class="table_button">
+											<button type='button' class='delete_button' onclick='show_delete_form(<?php echo $i ?>)'></button>
+											<button type='button' class='edit_button' onclick='show_edit_form(<?php echo $i ?>)'></button>
+										</div>
+									<?php
+								}
+								?>
+								</td>
+								<td><?php echo $user['id_utilisateur'] ?></td>
+							</tr>
+		      	<?php
+						$i++;
+						}
+						?>
+					</table>
+				</div>
+			<?php
 			}
 			?>
 
 		</section>
+
+		<!--formulaire suppression utilisateur-->
+
+		<div id="delete_form">
+			<form action="../../controller/admin_delete_user.php" method="POST">
+				<h1>Supprimer</h1>
+
+				<label><b>Id :</b></label>
+				<input type="number" name="id_utilisateur" readonly='readonly' required>
+				<label><b>Nom :</b></label>
+				<input type="text" name="nom" readonly="readonly" required>
+				<br>
+				<label><b>Prénom :</b></label>
+				<input type="text" name="prenom" readonly="readonly" required>
+				<br>
+				<label><b>Email :</b></label>
+				<input type="email" name="adresse_mail" readonly="readonly" required>
+				<br>
+				<label><b>Rôle :</b></label>
+				<input type="text" name="role" readonly="readonly" required>
+				<br><br>
+				<p style="color:#59adde;text-align:center;">Voulez-vous vraiment supprimer cet utilisateur ?</p>
+				<br>
+				<input type="submit" id='confirm' value='Valider'><input type='button' id='cancel' value='Annuler' onclick="hide_delete_form()" autofocus>
+
+			</form>
+		</div>
+
+		<!--formulaire edition utilisateur-->
+
+		<div id="edit_form">
+			<form action="../../controller/admin_edit_user.php" method="POST">
+
+				<h1>Editer</h1>
+
+				<label><b>Id :</b></label>
+				<input type="number" name="id_utilisateur" readonly='readonly' required>
+				<p><em>Vous ne pouvez pas modifier l'id</em></p></br>
+				<label><b>Nom :</b></label>
+				<input type="text" name="nom" required>
+				<br>
+				<label><b>Prénom :</b></label>
+				<input type="text" name="prenom" required>
+				<br>
+				<label><b>Email :</b></label>
+				<input type="email" name="adresse_mail" required>
+				<br>
+				<label><b>Rôle :</b></label>
+				<select name="role">
+				  <option value="U">Utilisateur</option>
+				  <option value="G">Gestionnaire</option>
+				  <option value="A">Administrateur</option>
+				</select>
+				<br><br>
+				<input type="submit" id='confirm' value='Valider'><input type='button' id='cancel' value='Annuler' onclick="hide_edit_form()" autofocus>
+
+			</form>
+		</div>
+
 		<?php include("../headerfooter/Footer.php"); ?>
 
 	</body>
