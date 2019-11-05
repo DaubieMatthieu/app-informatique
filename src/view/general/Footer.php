@@ -10,6 +10,7 @@
       <ul>
         <li>CGU</li>
         <li>A propos</li>
+        <li><a href="../faq/faq.php">FAQ</a></li>
         <li>@2019 Kinesense</li>
       </ul>
     </footer>
