@@ -4,12 +4,17 @@ section{
 	position:relative;
 	top:75px;
 	width: 100%;
+}
 
+section h1
+{
+	font-size:30px;
+	text-align: center;
+  margin-top:5%;
 }
 
 #faq{
 	margin:auto;
-  margin-top:5%;
   margin-bottom:5%;
 	width: 50%;
 	display: flex;
@@ -17,10 +22,6 @@ section{
 	align-items: center;
 }
 
-section h1
-{
-	font-size:30px;
-}
 
 .question{
 	background-color: #eee;

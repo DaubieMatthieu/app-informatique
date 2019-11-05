@@ -13,9 +13,10 @@
 		<?php include("../general/Header.php"); ?>
 
 		<section>
-			<div id="faq">
 
-				<h1>Questions fréquentes</h1></br>
+			<h1>Questions fréquentes</h1></br>
+			
+			<div id="faq">
 
 				<button class="question">Question 1</button>
 				<div class="reponse">
