@@ -12,36 +12,58 @@
 
 		<?php include("../general/Header.php"); ?>
 
+		<!--section messages serveur-->
+
+		<?php include('../general/Message_serveur.php');?>
+
+		<!--section sujets-->
+
 		<section>
 
 			<h1>Questions fréquentes</h1></br>
-			
+
 			<div id="faq">
 
-				<button class="question">Question 1</button>
-				<div class="reponse">
-					<p>Raptim igitur properantes ut motus sui rumores celeritate nimia praevenirent, vigore corporum ac levitate confisi per flexuosas semitas ad summitates collium tardius evadebant. et cum superatis difficultatibus arduis ad supercilia venissent fluvii Melanis alti et verticosi, qui pro muro tuetur accolas circumfusus, augente nocte adulta terrorem quievere paulisper lucem opperientes. arbitrabantur enim nullo inpediente transgressi inopino adcursu adposita quaeque vastare, sed in cassum labores pertulere gravissimos.</p>
-				</div>
+				<?php
 
-				<button class="question">Question 2</button>
-				<div class="reponse">
-					<p>Raptim igitur properantes ut motus sui rumores celeritate nimia praevenirent, vigore corporum ac levitate confisi per flexuosas semitas ad summitates collium tardius evadebant. et cum superatis difficultatibus arduis ad supercilia venissent fluvii Melanis alti et verticosi, qui pro muro tuetur accolas circumfusus, augente nocte adulta terrorem quievere paulisper lucem opperientes. arbitrabantur enim nullo inpediente transgressi inopino adcursu adposita quaeque vastare, sed in cassum labores pertulere gravissimos.</p>
-				</div>
+				$db_username = 'root';
+				$db_password = '';
+				$db_name     = 'infinite_sense';
+				$db_host     = 'localhost';
+				try
+				{
+					$db = new PDO('mysql:host='.$db_host.';dbname='.$db_name, $db_username, $db_password, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION ));
+				} catch (Exception $e) {
+					?><script> show_message('Connexion à la base de donnée impossible','red'); </script><?php
+					exit;
+				}
 
-				<button class="question">Question 3</button>
-				<div class="reponse">
-					<p>Raptim igitur properantes ut motus sui rumores celeritate nimia praevenirent, vigore corporum ac levitate confisi per flexuosas semitas ad summitates collium tardius evadebant. et cum superatis difficultatibus arduis ad supercilia venissent fluvii Melanis alti et verticosi, qui pro muro tuetur accolas circumfusus, augente nocte adulta terrorem quievere paulisper lucem opperientes. arbitrabantur enim nullo inpediente transgressi inopino adcursu adposita quaeque vastare, sed in cassum labores pertulere gravissimos.</p>
-				</div>
+				try {
+					$req = "SELECT question, reponse FROM question_faq";
+					$rep = $db->query($req);
 
-				<button class="question">Question 4</button>
-				<div class="reponse">
-					<p>Raptim igitur properantes ut motus sui rumores celeritate nimia praevenirent, vigore corporum ac levitate confisi per flexuosas semitas ad summitates collium tardius evadebant. et cum superatis difficultatibus arduis ad supercilia venissent fluvii Melanis alti et verticosi, qui pro muro tuetur accolas circumfusus, augente nocte adulta terrorem quievere paulisper lucem opperientes. arbitrabantur enim nullo inpediente transgressi inopino adcursu adposita quaeque vastare, sed in cassum labores pertulere gravissimos.</p>
-				</div>
+				} catch (Exception $e)
+				{
+					?><script type="text/javascript"> show_message('Erreur serveur','red'); </script><?php
+					exit;
+				}
 
-				<button class="question">Question 5</button>
-				<div class="reponse">
-					<p>Raptim igitur properantes ut motus sui rumores celeritate nimia praevenirent, vigore corporum ac levitate confisi per flexuosas semitas ad summitates collium tardius evadebant. et cum superatis difficultatibus arduis ad supercilia venissent fluvii Melanis alti et verticosi, qui pro muro tuetur accolas circumfusus, augente nocte adulta terrorem quievere paulisper lucem opperientes. arbitrabantur enim nullo inpediente transgressi inopino adcursu adposita quaeque vastare, sed in cassum labores pertulere gravissimos.</p>
-				</div>
+				if ($rep->rowCount()==0)
+
+				{
+					?><script type="text/javascript"> show_message('Aucun sujet trouvé','orange'); </script><?php
+				} else {
+
+	      	while ($sujets=$rep->fetch()) {
+						?>
+						<button class="question"><?php echo $sujets['question']; ?></button>
+						<div class="reponse">
+							<?php echo '<p>'.$sujets['reponse'].'</p>'; ?>
+						</div>
+						<?php
+					}
+				}
+				?>
 
 			</div>
 		</section>
