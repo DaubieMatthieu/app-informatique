@@ -32,8 +32,8 @@ if($adresse_mail == "" || $mot_de_passe == "") //vérification des données envo
 try {
   $check = $db->prepare("SELECT * FROM utilisateur where adresse_mail = :adresse_mail and mot_de_passe = :mot_de_passe");
   $check->bindValue(':adresse_mail', $adresse_mail, PDO::PARAM_STR);
-  // Encode to SHA1
-  $mot_de_passe = sha1($mot_de_passe);
+  // Encode to SHA256
+  $mot_de_passe = hash('sha256', $mot_de_passe);
   $check->bindValue(':mot_de_passe', $mot_de_passe, PDO::PARAM_STR);
   $check->execute();
 } catch (Exception $e)

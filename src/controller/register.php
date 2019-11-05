@@ -55,7 +55,8 @@ try {
   $req->bindValue(':nom', $nom, PDO::PARAM_STR);
   $req->bindValue(':prenom', $prenom, PDO::PARAM_STR);
   $req->bindValue(':adresse_mail', $adresse_mail, PDO::PARAM_STR);
-  $mot_de_passe = sha1($mot_de_passe);  // Encode to SHA1
+  // Encode to SHA256
+  $mot_de_passe = hash('sha256', $mot_de_passe);
   $req->bindValue(':mot_de_passe', $mot_de_passe, PDO::PARAM_STR);
   $req->execute();
   $req->closeCursor();
