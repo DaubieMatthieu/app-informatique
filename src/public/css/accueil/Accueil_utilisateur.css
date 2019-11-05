@@ -10,51 +10,69 @@ section
 section h1
 {
   position:relative;
-	top:0;
-  margin:0 auto;
   margin-top:5%;
-  margin-bottom:5%;
+  margin-bottom:3%;
 	text-align:center;
 	font-size:30px;
 }
+
+#tableau
+{
+	position:relative;
+	overflow-y: auto;
+	scrollbar-width: thin;
+	height: 300px;
+	width: 83%;
+	margin: auto;
+}
+
+::-webkit-scrollbar {
+	width: 7px;
+}
+::-webkit-scrollbar-thumb {
+  background: lightgrey;
+}
+
 section table
 {
 	border-collapse:collapse;
-	width:83%;
+	width: 100%;
 	margin:auto;
 	border: 1px gray solid;
 }
-section table th
+
+section table thead th {
+	position: sticky;
+	top:0;
+}
+
+section table thead th
 {
 	background-color:#6a606c;
 	color:white;
-	border: 1px gray solid;
 }
 
-section table th:nth-child(1)
-{
-  width:20%
-}
-
-section table th:nth-child(2)
-{
-  width:60%
-}
-
-section table th:nth-child(3)
-{
-  width:20%
-}
-
-section table td
+section table tbody td
 {
 	text-align:center;
-	border-left: 1px gray solid;
-	border-right: 1px gray solid;
+	vertical-align: middle;
 }
-section table th, section table td
+
+section table thead th, section table tbody td
 {
 	padding-top:5px;
 	padding-bottom:5px;
 	font-size:20px;
+	height: 32px;
+	border: 1px gray solid;
+}
+
+section table tr > *:nth-child(1)
+{
+	width:20%;
+}
+
+section table tr > *:nth-child(2)
+{
+	width: 80%;
 }

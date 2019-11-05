@@ -8,11 +8,11 @@
 
 	<body>
 
-		<?php include("../headerfooter/Header_logged_out.php"); ?>
+		<?php include("../general/Header.php"); ?>
 
 		<!--section messages serveur-->
 
-		<?php include('../headerfooter/Message_serveur.php');?>
+		<?php include('../general/Message_serveur.php');?>
 
 		<!--formulaire Inscription-->
 
@@ -23,7 +23,7 @@
 							<h1>Inscription</h1>
 
 							<label><b>Nom</b></label>
-							<input type="text" placeholder="Entrer votre nom" name="nom" required>
+							<input type="text" placeholder="Entrer votre nom" name="nom" required autofocus>
 
 							<label><b>Prénom</b></label>
 							<input type="text" placeholder="Entrer votre prénom" name="prenom" required>
@@ -32,7 +32,7 @@
 							<input type="email" placeholder="Entrer votre adresse mail" name="adresse_mail" required>
 
 							<label><b>Mot de passe</b></label>
-							<input type="password" placeholder="Entrer votre mot de passe" name="mot_de_passe" minlength="5" required>
+							<input type="password" placeholder="Entrer votre mot de passe" name="mot_de_passe" autocomplete="new-password" minlength="5" required>
 
 							<input type="submit" value='Valider' >
 
@@ -40,7 +40,7 @@
 			</div>
 		</section>
 
-		<?php include("../headerfooter/footer.php"); ?>
+		<?php include("../general/footer.php"); ?>
 
 
 	</body>

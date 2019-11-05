@@ -29,16 +29,18 @@ header > ul > li
 	color:white;
 	margin-top: 12px;
 	margin-bottom:12px;
-	font-size: 20px;
-	color:white;
 	padding:14px 20px;
 }
 
 header a
 {
 	text-decoration: none;
-	color: white;
 	transition: all 0.2s;
+}
+
+header > ul > li > a
+{
+	color: white;
 }
 
 header a:hover
@@ -60,7 +62,7 @@ header > ul > li:nth-child(3)
 	right:3%;
 }
 
-header > ul > li:nth-child(3):hover
+#menu:hover
 {
 	cursor: pointer;
 	background-color: white;
@@ -68,7 +70,7 @@ header > ul > li:nth-child(3):hover
 	transition: all 0.2s;
 }
 
-#deroulant ul
+#menu ul
 {
 	position:absolute;
   right:0;
@@ -84,22 +86,22 @@ header > ul > li:nth-child(3):hover
   color:black
 }
 
-#deroulant ul li
+#menu ul li
 {
     text-align: left;
     position: relative;
 		display: block;
 }
 
-#deroulant ul a
+#menu ul a
 {
 	color:black;
 }
 
-#deroulant li:hover ul {
+#menu:hover ul {
   display: block ;
 }
 
-#deroulant li:hover ul li a:hover {
+#menu:hover ul li a:hover {
   color:#00ff91;
 }

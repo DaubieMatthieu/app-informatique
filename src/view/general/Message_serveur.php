@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="utf-8" />
-		<link rel="stylesheet" href="../../public/css/headerfooter/Message_serveur.css" />
+		<link rel="stylesheet" href="../../public/css/general/Message_serveur.css" />
 		<script type="text/javascript" src="../../public/js/general/Message_serveur.js"></script>
 	</head>
 

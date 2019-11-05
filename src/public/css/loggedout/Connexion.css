@@ -53,7 +53,7 @@ input[type=submit] {
 input[type=submit]:hover {
     background-color: white;
     color: #59adde;
-    border: 1px solid #59adde;
+    outline: 1px solid #59adde;
 }
 
 section a

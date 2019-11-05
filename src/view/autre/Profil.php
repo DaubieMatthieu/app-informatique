@@ -8,7 +8,7 @@
 
 	<body>
 
-		<?php include("../headerfooter/Header_logged_in_profil.php"); ?>
+		<?php include("../general/Header"); ?>
 
 		<section>
 
@@ -54,7 +54,7 @@
 			</div>
 		</section>
 
-		<?php include("../headerfooter/footer.php"); ?>
+		<?php include("../general/footer.php"); ?>
 
 
 	</body>

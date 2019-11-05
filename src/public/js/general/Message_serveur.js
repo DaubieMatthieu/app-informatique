@@ -42,12 +42,13 @@ function get_message(message_get) {
       if (message_get['error'] == 2.1 || message_get['error'] == 2.2) {message_text='Erreur serveur';}
       if (message_get['error'] == 3) {message_text='Identifiants incorrects';}
       if (message_get['error'] == 4) {message_text='Adresse mail déjà utilisée';}
+      if (message_get['error'] == 5) {message_text='Erreur session';}
       message_color='red';
     }
     if (key == 'success') {
       if (message_get['success'] == 'edit') {message_text='Utilisateur modifié'}
       if (message_get['success'] == 'delete') {message_text='Utilisateur supprimé'}
-      if (message_get['success'] == 'register') {message_text='Profil créée'}
+      if (message_get['success'] == 'register') {message_text='Profil créé'}
       message_color='green';
     }
     if (typeof message_text !== 'undefined' && typeof message_color !== 'undefined') {show_message(message_text,message_color);}

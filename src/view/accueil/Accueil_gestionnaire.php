@@ -8,7 +8,7 @@
 
 	<body>
 
-		<?php include("../headerfooter/Header_logged_in.php"); ?>
+		<?php include("../general/Header.php"); ?>
 
 		<section>
 			<nav>
@@ -33,7 +33,7 @@
 			</table>
 		</section>
 
-		<?php include("../headerfooter/Footer.php"); ?>
+		<?php include("../general/Footer.php"); ?>
 
 	</body>
 </html>

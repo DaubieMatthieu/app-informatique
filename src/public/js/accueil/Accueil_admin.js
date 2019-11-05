@@ -16,6 +16,7 @@ function show_delete_form(line) {
 
   delete_form.style.visibility='visible';
   delete_form.style.opacity='1';
+  setTimeout(function(){delete_form.getElementsByTagName('input')[6].focus();},100);
 }
 
 function hide_delete_form() {
@@ -45,6 +46,7 @@ function show_edit_form(line){
 
   edit_form.style.visibility='visible';
   edit_form.style.opacity='1';
+  setTimeout(function(){edit_form.getElementsByTagName('input')[5].focus();},100);
 }
 
 function hide_edit_form() {

@@ -9,8 +9,6 @@ section
 
 section nav {
   position:relative;
-	top:0;
-  margin:0 auto;
   margin-top:5%;
   margin-bottom:5%;
 }
@@ -25,8 +23,6 @@ section nav form
 {
 	margin:auto;
 	text-align:center;
-	border: 1px black solid;
-	border-radius:20px;
 	height:30px;
 	width:570px;
 	padding-bottom:2px;
@@ -35,12 +31,12 @@ section nav form
 
 section nav form input
 {
+	border:none;
+	border-radius:20px;
 	outline: none;
-	border:0px;
+	height: 100%;
 	text-align:center;
-	padding:0px;
-	margin:0px;
-	box-shadow:none;
+	box-shadow: 0 1px 6px 0 rgba(32, 33, 36, .5);
 	font-size:15px;
 }
 
@@ -66,9 +62,18 @@ section nav form #search
 {
 	position:relative;
 	overflow-y: auto;
+	scrollbar-width: thin;
 	height: 300px;
 	width: 83%;
 	margin: auto;
+}
+
+
+::-webkit-scrollbar {
+	width: 7px;
+}
+::-webkit-scrollbar-thumb {
+  background: lightgrey;
 }
 
 section table
@@ -78,25 +83,31 @@ section table
 	margin:auto;
 	border: 1px gray solid;
 }
-section table th
+
+section table thead th {
+	position: sticky;
+	top:0;
+}
+
+section table thead th
 {
 	background-color:#6a606c;
 	color:white;
-	border: 1px gray solid;
 }
-section table td
+
+section table tbody td
 {
 	text-align:center;
-	border: 1px gray solid;
-	//border-left: 1px gray solid;
 	vertical-align: middle;
 }
-section table th, section table td
+
+section table thead th, section table tbody td
 {
 	padding-top:5px;
 	padding-bottom:5px;
 	font-size:20px;
 	height: 32px;
+	border: 1px gray solid;
 }
 
 section table button
@@ -116,17 +127,17 @@ section table button
 	justify-content: space-around;
 }
 
-section table tr th:nth-child(1), section table tr th:nth-child(2), section table tr td:nth-child(4)
+section table tr > *:nth-child(1), section table tr > *:nth-child(2), section table tr > *:nth-child(4)
 {
 	width:20%;
 }
 
-section table tr th:nth-child(3)
+section table tr > *:nth-child(3)
 {
 	width: 30%;
 }
 
-section table tr th:nth-child(5)
+section table tr > *:nth-child(5)
 {
 	width: 10%;
 }
@@ -211,21 +222,21 @@ section table .edit_button
     border: 1px solid white;
 }
 
-#delete_form input[type=button]#cancel {
+#delete_form input[type=button].cancel {
   background-color: var(--cancel_color);
 }
 
-#delete_form input[type=button]#cancel:hover {
+#delete_form input[type=button].cancel:hover {
   background-color: white;
   color: var(--cancel_color);
   border-color: var(--cancel_color);
 }
 
-#delete_form input[type=submit]#confirm {
+#delete_form input[type=submit].confirm {
   background-color: var(--delete_color);
 }
 
-#delete_form input[type=submit]#confirm:hover {
+#delete_form input[type=submit].confirm:hover {
     background-color: white;
     color: var(--delete_color);
     border-color: var(--delete_color);
@@ -295,21 +306,21 @@ section table .edit_button
     border: 1px solid white;
 }
 
-#edit_form input[type=button]#cancel {
+#edit_form input[type=button].cancel {
   background-color: var(--cancel_color);
 }
 
-#edit_form input[type=button]#cancel:hover {
+#edit_form input[type=button].cancel:hover {
   background-color: white;
   color: var(--cancel_color);
   border-color: var(--cancel_color);
 }
 
-#edit_form input[type=submit]#confirm {
+#edit_form input[type=submit].confirm {
   background-color: var(--delete_color);
 }
 
-#edit_form input[type=submit]#confirm:hover {
+#edit_form input[type=submit].confirm:hover {
     background-color: white;
     color: var(--delete_color);
     border-color: var(--delete_color);

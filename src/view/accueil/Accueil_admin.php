@@ -9,11 +9,11 @@
 
 	<body>
 
-		<?php include("../headerfooter/Header_logged_in.php"); ?>
+		<?php include("../general/Header.php"); ?>
 
 		<!--section messages serveur-->
 
-		<?php include('../headerfooter/Message_serveur.php');?>
+		<?php include('../general/Message_serveur.php');?>
 
 		<!--section gérer les utilisateurs-->
 
@@ -25,7 +25,6 @@
 				<h1> Gérer les utilisateurs </h1></br>
 				<form method="post" action="Accueil_admin.php">
 					<input type="search" name="search" autocomplete="off" placeholder="Rechercher un utilisateur" size="64" maxlength="64"/>
-					<button type="submit" id='search'></button>
 				</form>
 			</nav>
 
@@ -72,45 +71,49 @@
 
 				<div id="tableau">
 					<table>
-						<tr>
-							<th>Nom</th>
-							<th>Prénom</th>
-							<th>Email</th>
-							<th>Type d'utilisateur</th>
-							<th>Action</th>
-							<th>id</th>
-						</tr>
-						<?php
-						$i=1;
-		      	while ($user=$rep->fetch()) {
-						?>
-			        <tr>
-		            <td><?php echo $user['nom']; ?></td>
-		            <td><?php echo $user['prenom']; ?></td>
-		            <td><?php echo $user['adresse_mail']; ?></td>
-								<?php
-								if ($user['role']==='A') {$role='Administrateur';}
-								if ($user['role']==='G') {$role='Gestionnaire';}
-								if ($user['role']==='U') {$role='Utilisateur';}
-								?>
-								<td><?php echo $role; ?></td>
-								<td>
-									<?php
-									if ($role!='Administrateur') {?>
-										<div class="table_button">
-											<button type='button' class='delete_button' onclick='show_delete_form(<?php echo $i ?>)'></button>
-											<button type='button' class='edit_button' onclick='show_edit_form(<?php echo $i ?>)'></button>
-										</div>
-									<?php
-								}
-								?>
-								</td>
-								<td><?php echo $user['id_utilisateur'] ?></td>
+						<thead>
+							<tr>
+								<th>Nom</th>
+								<th>Prénom</th>
+								<th>Email</th>
+								<th>Type d'utilisateur</th>
+								<th>Action</th>
+								<th>id</th>
 							</tr>
-		      	<?php
-						$i++;
-						}
-						?>
+						</thead>
+						<tbody>
+							<?php
+							$i=1;
+			      	while ($user=$rep->fetch()) {
+							?>
+				        <tr>
+			            <td><?php echo $user['nom']; ?></td>
+			            <td><?php echo $user['prenom']; ?></td>
+			            <td><?php echo $user['adresse_mail']; ?></td>
+									<?php
+									if ($user['role']==='A') {$role='Administrateur';}
+									if ($user['role']==='G') {$role='Gestionnaire';}
+									if ($user['role']==='U') {$role='Utilisateur';}
+									?>
+									<td><?php echo $role; ?></td>
+									<td>
+										<?php
+										if ($role!='Administrateur') {?>
+											<div class="table_button">
+												<button type='button' class='delete_button' onclick='show_delete_form(<?php echo $i ?>)'></button>
+												<button type='button' class='edit_button' onclick='show_edit_form(<?php echo $i ?>)'></button>
+											</div>
+										<?php
+									}
+									?>
+									</td>
+									<td><?php echo $user['id_utilisateur'] ?></td>
+								</tr>
+			      	<?php
+							$i++;
+							}
+							?>
+						</tbody>
 					</table>
 				</div>
 			<?php
@@ -141,12 +144,11 @@
 				<br><br>
 				<p style="color:#59adde;text-align:center;">Voulez-vous vraiment supprimer cet utilisateur ?</p>
 				<br>
-				<input type="submit" id='confirm' value='Valider'><input type='button' id='cancel' value='Annuler' onclick="hide_delete_form()" autofocus>
-
+				<input type="submit" class='confirm' value='Valider'><input type='button' class='cancel' value='Annuler' onclick="hide_delete_form()">
 			</form>
 		</div>
 
-		<!--formulaire edition utilisateur-->
+		<!--formulaire edition utilisateu-->
 
 		<div id="edit_form">
 			<form action="../../controller/admin_edit_user.php" method="POST">
@@ -172,12 +174,12 @@
 				  <option value="A">Administrateur</option>
 				</select>
 				<br><br>
-				<input type="submit" id='confirm' value='Valider'><input type='button' id='cancel' value='Annuler' onclick="hide_edit_form()" autofocus>
+				<input type="submit" class='confirm' value='Valider'><input type='button' class='cancel' value='Annuler' onclick="hide_edit_form()">
 
 			</form>
 		</div>
 
-		<?php include("../headerfooter/Footer.php"); ?>
+		<?php include("../general/Footer.php"); ?>
 
 	</body>
 </html>
