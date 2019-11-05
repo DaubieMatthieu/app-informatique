@@ -1,17 +1,25 @@
-body{
-	font-family: cambria;
-	margin: 0;
-	padding: 0;
+* {padding: 0; margin: 0;}
+
+section{
+	position:relative;
+	top:75px;
+	width: 100%;
+
 }
 
 #faq{
+	margin:auto;
+  margin-top:5%;
+  margin-bottom:5%;
+	width: 50%;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 }
 
-section{
-	width: 50%;
+section h1
+{
+	font-size:30px;
 }
 
 .question{

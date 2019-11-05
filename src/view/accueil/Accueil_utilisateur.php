@@ -10,6 +10,9 @@
 
 		<?php include("../general/Header.php"); ?>
 
+		<!--section messages serveur-->
+
+		<?php include('../general/Message_serveur.php');?>
 
 		<section>
 
