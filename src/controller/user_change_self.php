@@ -35,6 +35,8 @@ if(isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['adresse_mail
       $maj->bindValue(':maj_nom',$maj_nom, PDO::PARAM_STR);
       $maj->bindValue(':maj_prenom',$maj_prenom, PDO::PARAM_STR);
       $maj->bindValue(':maj_adresse_mail',$maj_adresse_mail, PDO::PARAM_STR);
+      // Encode to SHA256
+      $mot_de_passe = hash('sha256', $mot_de_passe);
       $maj->bindValue(':maj_mot_de_passe',$maj_mot_de_passe, PDO::PARAM_STR);
       $maj->bindValue(':adresse_mail',$adresse_mail, PDO::PARAM_STR);
       $maj->execute();

@@ -1,0 +1,74 @@
+* {padding: 0; margin: 0;}
+
+section
+{
+	position:relative;
+	top:75px;
+	width:100%;
+}
+
+section h1
+{
+  position:relative;
+  margin-top:5%;
+  margin-bottom:3%;
+	text-align:center;
+	font-size:30px;
+}
+
+#tableau
+{
+	position:relative;
+	overflow-y: auto;
+	scrollbar-width: thin;
+	height: 300px;
+	width: 83%;
+	margin: auto;
+}
+
+::-webkit-scrollbar {
+	width: 7px;
+}
+::-webkit-scrollbar-thumb {
+  background: lightgrey;
+}
+
+section table
+{
+	border-collapse:collapse;
+	width: 100%;
+	margin:auto;
+	border: 1px gray solid;
+}
+
+section table thead th
+{
+	position: sticky;
+	top:0;
+}
+
+section table thead th
+{
+	background-color:#6a606c;
+	color:white;
+}
+
+section table tbody td
+{
+	text-align:center;
+	vertical-align: middle;
+}
+
+section table thead th, section table tbody td
+{
+	padding-top:5px;
+	padding-bottom:5px;
+	font-size:20px;
+	height: 32px;
+	border: 1px gray solid;
+}
+
+section table tr > *
+{
+	width:33%;
+}

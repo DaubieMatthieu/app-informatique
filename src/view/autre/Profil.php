@@ -8,7 +8,7 @@
 
 	<body>
 
-		<?php include("../general/Header"); ?>
+		<?php include("../general/Header.php"); ?>
 
 		<section>
 
@@ -27,7 +27,7 @@
 							<p><em>Vous ne pouvez pas modifier votre adresse mail</em></p></br>
 
 							<label><b>Mot de passe</b></label>
-							<input type="password" value=<?php echo $_SESSION['mot_de_passe'];?> onfocus="this.value=''" name="mot_de_passe" minlength="5" required>
+							<input type="password" name="mot_de_passe" minlength="5" required>
 
 							<input type="submit" value='Valider' >
 
@@ -54,7 +54,7 @@
 			</div>
 		</section>
 
-		<?php include("../general/footer.php"); ?>
+		<?php include("../general/Footer.php"); ?>
 
 
 	</body>
