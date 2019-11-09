@@ -3,6 +3,7 @@
 	<head>
 		<meta charset="utf-8" />
 		<link rel="stylesheet" href="../../public/css/autre/Profil.css" />
+		<script src="../../public/js/autre/Profil.js"></script>
 		<title> Profil </title>
 	</head>
 
@@ -10,49 +11,74 @@
 
 		<?php include("../general/Header.php"); ?>
 
+		<?php include("../general/Message_serveur.php");?>
+
 		<section>
 
 			<div id="conteneur">
-					<form action="../../controller/user_edit_self.php" method="post">
-							<h1>Profil</h1>
+				<h1>Profil</h1><br>
 
-							<label><b>Nom</b></label>
-							<input type="text" value=<?php echo $_SESSION['nom'];?> name="nom" required>
+				<label><b>Nom</b></label>
+				<div class='infos'><?php echo $_SESSION['prenom']." ".$_SESSION['nom'];?><button class="edit_button" onclick="show_edit_form('nom')"></div>
 
-							<label><b>Prénom</b></label>
-							<input type="text" value=<?php echo $_SESSION['prenom'];?> name="prenom" required>
+				<label><b>Email</b></label>
+				<div class='infos'><?php echo $_SESSION['adresse_mail'];?><button class="edit_button" onclick="show_edit_form('adresse_mail')"></div>
 
-							<label><b>Email</b></label>
-							<input type="email" value=<?php echo $_SESSION['adresse_mail'];?> name="adresse_mail" readonly="readonly" required>
-							<p><em>Vous ne pouvez pas modifier votre adresse mail</em></p></br>
+				<label><b>Mot de passe</b></label>
+				<div class='infos'><button class="edit_button" onclick="show_edit_form('mot_de_passe')"></div>
 
-							<label><b>Mot de passe</b></label>
-							<input type="password" name="mot_de_passe" minlength="5" required>
-
-							<input type="submit" value='Valider' >
-
-							<?php
-							if(isset($_GET['erreur'])){
-									$err = $_GET['erreur'];
-									if($err==0) {
-											echo "<p style='color:red'>Echec de la connexion à la base de donnée</p>";}
-									if($err==3) {
-											echo "<p style='color:red'>Donnée manquantes</p>";}
-									if($err==4) {
-											echo "<p style='color:red'>Echec de l'envoi du formulaire</p>";}
-							}
-							if(isset($_GET['success'])){
-									$success = $_GET['success'];
-									if($success==1){
-											echo "<p style='color:green'>Données mises à jour</p>";}
-									if($success==0){
-											echo "<p style='color:red'>Erreur serveur 2</p>";}
-							}
-							?>
-
-					</form>
 			</div>
 		</section>
+
+		<div class='edit_forms'>
+
+			<div class="edit_nom">
+				<form action="../../controller/user_edit_self.php" method="POST">
+
+					<h1>Modifier le nom</h1><br>
+
+					<label><b>Prénom :</b></label>
+					<input type="text" name="prenom" value="<?php echo $_SESSION['prenom']?>" required>
+					<br>
+					<label><b>Nom :</b></label>
+					<input type="text" name="nom" value="<?php echo $_SESSION['nom']?>" required>
+					<br><br>
+					<input type="submit" class='confirm' value='Valider'><input type='button' class='cancel' value='Annuler' onclick="hide_edit_form('nom')">
+
+				</form>
+			</div>
+
+			<div class="edit_adresse_mail">
+				<form action="../../controller/user_edit_self.php" method="POST">
+
+					<h1>Modifier l'adresse mail</h1><br>
+
+					<label><b>Adresse Mail :</b></label>
+					<input type="text" name="nom" value="<?php echo $_SESSION['adresse_mail']?>" required>
+					<br><br>
+					<input type="submit" class='confirm' value='Valider'><input type='button' class='cancel' value='Annuler' onclick="hide_edit_form('adresse_mail')">
+
+				</form>
+			</div>
+
+			<div class="edit_mot_de_passe">
+				<form action="../../controller/user_edit_self.php" method="POST">
+
+					<h1>Modifier le mot de passe</h1><br>
+
+					<input type="password" name="password_old" placeholder="Saisissez votre mot de passe :" required>
+					<br>
+					<input type="password" name="password_new" placeholder="Nouveau mot de passe" autocomplete="new-password" minlength="5" required>
+					<br>
+					<input type="password" name="password_new_confirm" placeholder="Confirmez nouveau mot de passe" autocomplete="new-password" minlength="5" required>
+					<br><br>
+					<input type="submit" class='confirm' value='Valider'><input type='button' class='cancel' value='Annuler' onclick="hide_edit_form('mot_de_passe')">
+
+				</form>
+			</div>
+
+		</div>
+
 
 		<?php include("../general/Footer.php"); ?>
 

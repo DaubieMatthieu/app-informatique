@@ -3,8 +3,8 @@
 
 	<head>
 		<meta charset="utf-8" />
-		<link rel="stylesheet" href="../../public/css/autre/faq.css"/>
-		<script defer type='text/javascript' src="../../public/js/autre/faq.js"></script>
+		<link rel="stylesheet" href="../../public/css/autre/Faq.css"/>
+		<script defer type='text/javascript' src="../../public/js/autre/Faq.js"></script>
 		<title>Foire Aux Questions</title>
 	</head>
 

@@ -44,7 +44,7 @@ try {
 
 if($check->rowCount() == 0)  // nom d'utilisateur ou mot de passe incorrect
 {
-   header('Location:../view/loggedout/Connexion.php?error=3'); // utilisateur ou mot de passe incorrect
+   header('Location:../view/loggedout/Connexion.php?error=3.1'); // utilisateur ou mot de passe incorrect
    exit;
 }
 

@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if(!isset($_POST['nom']) || !isset($_POST['prenom']) || !isset($_POST['adresse_mail']) || !isset($_POST['mot_de_passe']))
+if(empty($_POST))
 {
    header('Location: ../view/autre/Profil.php?error=1.1'); //echec de l'envoi du formulaire
    exit;
@@ -22,39 +22,41 @@ try
   exit;
 }
 
-$nom = htmlspecialchars($_SESSION['nom']);
-$prenom = htmlspecialchars($_SESSION['prenom']);
-$adresse_mail = htmlspecialchars($_SESSION['adresse_mail']);
-$mot_de_passe = htmlspecialchars($_SESSION['mot_de_passe']);
-
-
-$maj_nom = htmlspecialchars($_POST['nom']);
-$maj_prenom = htmlspecialchars($_POST['prenom']);
-$maj_adresse_mail = htmlspecialchars($_POST['adresse_mail']);
-$maj_mot_de_passe = htmlspecialchars($_POST['mot_de_passe']);
-
-if($maj_nom == "" || $maj_prenom == "" || $maj_adresse_mail == "" || $maj_mot_de_passe == "") //vérification des données envoyées
-{
-   header('Location: ../view/autre/Profil.php?error=1.2'); // donnée(s) manquante(s)
-   exit;
-}
+$id_utilisateur = htmlspecialchars($_SESSION['id_utilisateur']);
 
 try {
-  $maj = $db->prepare("UPDATE utilisateur SET nom=:maj_nom, prenom=:maj_prenom, adresse_mail=:maj_adresse_mail, mot_de_passe=:maj_mot_de_passe where adresse_mail=:adresse_mail");
-  $maj->bindValue(':maj_nom',$maj_nom, PDO::PARAM_STR);
-  $maj->bindValue(':maj_prenom',$maj_prenom, PDO::PARAM_STR);
-  $maj->bindValue(':maj_adresse_mail',$maj_adresse_mail, PDO::PARAM_STR);
-  $maj->bindValue(':maj_mot_de_passe',$maj_mot_de_passe, PDO::PARAM_STR);
-  $maj->bindValue(':adresse_mail',$adresse_mail, PDO::PARAM_STR);
+
+  if (in_array('password_old',array_keys($_POST)) && in_array('password_new',array_keys($_POST)) && in_array('password_new_confirm',array_keys($_POST)))
+  {
+    $mdp_check = $db->prepare("SELECT mot_de_passe FROM utilisateur where id_utilisateur=:id_utilisateur and mot_de_passe=:mot_de_passe");
+    $mdp_check->bindValue(':id_utilisateur', $id_utilisateur);
+    $mdp_check->bindValue(':mot_de_passe', hash('sha256', $_POST['password_old']));
+    $mdp_check->execute();
+    if ($mdp_check->rowCount() == 0) // mot de passe incorrect
+    {
+      header('Location:../view/autre/Profil.php?error=3.2');
+      exit;
+    } else {
+      if ($_POST['password_new'] !== $_POST['password_new_confirm']) {
+        header('Location:../view/autre/Profil.php?error=3.3');
+        exit;
+      } else {
+        $maj_infos='mot_de_passe='."'".hash('sha256',$_POST['password_new'])."'";
+      }
+    }
+  } else {
+    $maj_infos=array();
+    foreach($_POST as $key => $value){
+      $maj_infos[] = "$key = '$value'";
+      $_SESSION[$key]=$value;
+    }
+    $maj_infos = implode(', ', $maj_infos);
+  }
+  $maj = $db->prepare("UPDATE utilisateur SET ".$maj_infos." WHERE id_utilisateur=$id_utilisateur");
   $maj->execute();
   $maj->closeCursor();
 
-  $_SESSION['nom']=$maj_nom;
-  $_SESSION['prenom']=$maj_prenom;
-  $_SESSION['adresse_mail']=$maj_adresse_mail;
-  $_SESSION['mot_de_passe']=$maj_mot_de_passe;
-
-  header('Location:../view/autre/Profil.php?success=1'); //données mise à jour
+  header('Location:../view/autre/Profil.php?success=data_update'); //données mises à jour
   exit;
 }
 catch(Exception $e)
