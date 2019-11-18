@@ -52,8 +52,9 @@
 					foreach($keywords as $keyword) {
 						$req .= " OR concat(nom,prenom,adresse_mail) LIKE '%$keyword%'";
 					}
+					$req .=' ORDER BY role DESC, nom ASC';
 				} else {
-					$req = "SELECT * FROM utilisateur";
+					$req = "SELECT * FROM utilisateur ORDER BY role DESC, nom ASC";
 				}
 				$rep = $db->query($req);
 

@@ -37,7 +37,7 @@
 				$id_gestionnaire=$_SESSION['id_utilisateur'];
 				$req1 = "SELECT id_utilisateur FROM resultat_test WHERE id_gestionnaire=$id_gestionnaire";
 				$rep1 = $db->query($req1);
-				$liste_utilisateurs=array();
+				$liste_utilisateurs=array(-1);
 				while ($user=$rep1->fetch()) {
 					array_push($liste_utilisateurs, $user['id_utilisateur']);
 				}
@@ -71,7 +71,6 @@
 							<?php
 			      	while ($user=$rep2->fetch()) {
 							?>
-
 				        <tr>
 									<?php
 									try {
@@ -89,6 +88,7 @@
 										show_message("Erreur serveur à l'utilisateur id="+<?php echo $id_utilisateur ?>,'red');
 										</script><?php
 									}
+								?></tr><?php
 							}
 							?>
 						</tbody>
