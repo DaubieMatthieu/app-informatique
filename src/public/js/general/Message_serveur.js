@@ -45,6 +45,8 @@ function get_message(message_get) {
       if (message_get['error'] == 3.3) {message_text='Les mots de passe ne correspondent pas';}
       if (message_get['error'] == 4) {message_text='Adresse mail déjà utilisée';}
       if (message_get['error'] == 5) {message_text='Erreur session';}
+      if (message_get['error'] == 6) {message_text='Conversation indisponible';}
+      if (message_get['error'] == 7) {message_text='Sujet déjà existant';}
       message_color='red';
     }
     if (key == 'success') {
@@ -52,6 +54,8 @@ function get_message(message_get) {
       if (message_get['success'] == 'delete') {message_text='Utilisateur supprimé';}
       if (message_get['success'] == 'register') {message_text='Profil créé';}
       if (message_get['success'] == 'data_update') {message_text='Données mises à jour';}
+      if (message_get['success'] == 'message_post') {message_text='Message posté';}
+      if (message_get['success'] == 'create_new_subject') {message_text='Sujet crée';}
       message_color='green';
     }
     if (typeof message_text !== 'undefined' && typeof message_color !== 'undefined') {show_message(message_text,message_color);}

@@ -3,7 +3,7 @@ session_start();
 
 if(!isset($_POST['nom']) || !isset($_POST['prenom']) || !isset($_POST['adresse_mail']) || !isset($_POST['mot_de_passe']))
 {
-  header('Location: ../view/loggedout/Connexion.php?error=1.1'); //echec de l'envoi du formulaire
+  header('Location: ../view/loggedout/Inscription.php?error=1.1'); //echec de l'envoi du formulaire
   exit;
 }
 // connexion à la base de données

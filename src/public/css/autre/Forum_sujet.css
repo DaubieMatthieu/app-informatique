@@ -1,0 +1,145 @@
+* {padding: 0; margin: 0;}
+
+section
+{
+	position:relative;
+	top:75px;
+	width:100%;
+}
+
+section h1 {
+    position: relative;
+    margin-top: 5%;
+    margin-bottom: 3%;
+    text-align: center;
+    font-size: 30px;
+}
+
+#conversation {
+  position:relative;
+	overflow-y: auto;
+  height:350px;
+	scrollbar-width: thin;
+	width: 70%;
+	margin: auto;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+	width: 4px;
+}
+::-webkit-scrollbar-thumb {
+  background: lightgrey;
+  border-radius: 8px;
+}
+
+#conversation #first_message {
+  float:left;
+  clear:both;
+}
+
+#conversation .message_other {
+  float:left;
+  clear: both;
+}
+
+#conversation .message_self {
+  float:right;
+  clear:both;
+}
+
+#conversation #last_message {
+  float:right;
+  clear:both;
+}
+
+#conversation > * {
+  max-width: 60%;
+}
+
+#conversation .message button {
+  width: 100%;
+  padding: 20px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+#conversation .message h3 {
+  font-weight: normal;
+}
+
+#conversation > * > .utilisateur {
+  float:left;
+  opacity: .40;
+  text-align: left;
+  margin: 0px 5px;
+  font-size: 14px;
+}
+#conversation > * > .date {
+  float:right;
+  opacity: .40;
+  text-align: right;
+  margin: 0px 5px;
+  font-size: 14px;
+}
+
+#conversation > * > .texte {
+  clear: both;
+  border: none;
+  border-radius: 1.3em;
+  padding: 6px 12px;
+  font-size: 18px;
+}
+
+#conversation > .message_other > .texte {
+  background-color: #f1f0f0;
+  float:left;
+}
+
+#conversation> .message_self > .texte {
+  float:right;
+  background-color: rgb(0, 153, 255);
+  color: white;
+}
+
+#post {
+  width: 70%;
+  position: sticky;
+  margin: auto;
+  height: auto;
+}
+
+#post form {
+  width:100%;
+  display: block;
+  padding: 10px;
+}
+
+#post input[type='text'] {
+  float: left;
+  width: 80%;
+  border: none;
+  outline: none;
+  border-radius: 1.3em;
+  background-color: rgba(0, 0, 0, .05);
+  padding: 6px 12px;
+  font-size: 18px;
+}
+
+#post input[type='submit'] {
+  float: right;
+  width: 10%;
+  border:none;
+  outline:none;
+  padding: 6px 12px;
+  font-size: 18px;
+  border-radius: 1.3em;
+  color:black;
+  background-color: rgb(232, 234, 237);
+}
+
+#post input[type='submit']:hover {
+  background-color: #1a73e8;
+  color:white;
+}

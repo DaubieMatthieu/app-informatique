@@ -43,7 +43,7 @@ try {
   $maj->execute();
   $maj->closeCursor();
 
-  $gestion = $db->prepare("INSERT INTO `gestion_utilisateur`(`id_admin`, `id_utilisateur`, `action`, `date_gestion`, `changement_utilisateur`) VALUES (:id_admin,:id_utilisateur,'S',CURDATE(),:changement_utilisateur)");
+  $gestion = $db->prepare("INSERT INTO `gestion_utilisateur`(`id_admin`, `id_utilisateur`, `action`, `date_gestion`, `changement_utilisateur`) VALUES (:id_admin,:id_utilisateur,'S',NOW(),:changement_utilisateur)");
   $gestion->bindValue(':id_admin',$id_admin, PDO::PARAM_INT);
   $gestion->bindValue(':id_utilisateur',$id_utilisateur, PDO::PARAM_INT);
   $gestion->bindValue(':changement_utilisateur',$changement_utilisateur, PDO::PARAM_STR);

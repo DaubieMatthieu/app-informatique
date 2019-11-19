@@ -13,6 +13,7 @@ session_start();
 		<ul id="deroulant">
 			<li><a href="../../Index.php">InfiniteSense</a></li>
 			<li><a href="../autre/Faq.php">Faq</a></li>
+			<li><a href="../autre/Forum.php">Forum</a></li>
 
 			<?php
 			if (isset($_SESSION['role'])) //si l'utilisateur est connecté et qu'il a un role
