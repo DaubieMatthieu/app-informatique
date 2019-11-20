@@ -10,13 +10,10 @@
 
 		<?php
 		session_start();
-		Session_destroy();
+		session_destroy();
 		include("../general/Header.php");
+		include('../general/Message_serveur.php');
 		?>
-
-		<!--section messages serveur-->
-
-		<?php include('../general/Message_serveur.php');?>
 
 		<!--formulaire Inscription-->
 

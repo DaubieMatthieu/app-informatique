@@ -11,8 +11,8 @@ section nav {
   position:relative;
 	top:0;
   margin:0 auto;
-  margin-top:5%;
-  margin-bottom:5%;
+  margin-top:4%;
+  margin-bottom:3%;
   text-align: center;
 }
 
@@ -22,22 +22,39 @@ section nav h1
 	font-size:30px;
 }
 
-section nav a {
-    text-decoration: none;
-    background-color: #59adde;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-    border-radius: 5px;
+section nav a, section nav button {
+	color: white;
+  padding: 14px 20px;
+  border: none;
+	border-radius: 5px;
+	display: inline-block;
+	font-size: 16px;
+	margin: 0px 20px;
 }
 
+section nav a {
+	cursor: pointer;
+  text-decoration: none;
+  background-color: #59adde;
+  cursor: pointer;
+}
+
+
 section nav a:hover {
-    background-color: white;
-    color: #59adde;
-    border: 1px solid #59adde;
+  background-color: white;
+  color: #59adde;
+  outline: 1px solid #59adde;
+}
+
+section nav button {
+	outline: none;
+	background-color: #47ff94;
+}
+
+section nav button:hover {
+	background-color: white;
+	color: #47ff94;
+  outline: 1px solid #47ff94;
 }
 
 #tableau
@@ -125,4 +142,85 @@ section table .detail_button
   cursor: pointer;
 	margin-left: 10%;
 	margin-right: 10%;
+}
+
+:root {
+  --cancel_color: #ff476f;
+  --delete_color: #59adde;
+}
+
+/*fomulaire de création de sujet*/
+
+#pre_register_form {
+	width: 100%;
+	height:100%;
+	z-index:2;
+	position:absolute;
+	top:0;
+	bottom:0;
+	left: 0;
+	right: 0;
+	margin: auto;
+	display: flex;
+	visibility: hidden;
+	opacity: 0;
+  transition: visibility 0.3s, opacity 0.3s linear;
+	background-color:rgba(255,255,255,0.5);
+}
+
+#pre_register_form form {
+	position:relative;
+	margin:auto;
+  width:400px;
+  padding: 29px;
+  border: 1px solid #f1f1f1;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+	background-color: white;
+}
+
+#pre_register_form h1{
+  width: 60%;
+  margin: 0 auto;
+  padding-bottom: 10px;
+  text-align: center;
+}
+
+#pre_register_form input[type=email], #pre_register_form select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+#pre_register_form input[type=submit], #pre_register_form input[type=button]{
+	outline: none;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 2px;
+  border: none;
+  cursor: pointer;
+  width: 196px;
+  border: 1px solid white;
+}
+
+#pre_register_form input[type=button].cancel {
+  background-color: var(--cancel_color);
+}
+
+#pre_register_form input[type=button].cancel:hover {
+  background-color: white;
+  color: var(--cancel_color);
+  border-color: var(--cancel_color);
+}
+
+#pre_register_form input[type=submit].confirm {
+  background-color: var(--delete_color);
+}
+
+#pre_register_form input[type=submit].confirm:hover {
+    background-color: white;
+    color: var(--delete_color);
+    border-color: var(--delete_color);
 }

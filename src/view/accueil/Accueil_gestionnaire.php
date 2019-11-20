@@ -3,6 +3,7 @@
 	<head>
 		<meta charset="utf-8" />
 		<link rel="stylesheet" href="../../public/css/accueil/Accueil_gestionnaire.css" />
+		<script src="../../public/js/accueil/Accueil_gestionnaire.js"></script>
 		<title> Gestionnaire </title>
 	</head>
 
@@ -14,8 +15,10 @@
 
 		<section>
 			<nav>
-				<h1> <?php echo "Bienvenue " . $_SESSION['prenom'] . " " . $_SESSION["nom"] ?> </h1></br></br>
-				<a href="../autre/Launchtest.php">Lancer un test</a>
+				<h1> <?php echo "Bienvenue " . $_SESSION['prenom'] . " " . $_SESSION["nom"] ?> </h1></br>
+
+				<a href="../autre/Launchtest.php">Lancement test</a><!--
+				--><button type='button' class='pre_register_button' onclick='show_pre_register_form()'>Pré-inscription</button>
 			</nav>
 
 
@@ -34,6 +37,7 @@
 			}
 
 			try {
+
 				$id_gestionnaire=$_SESSION['id_utilisateur'];
 				$req1 = "SELECT id_utilisateur FROM resultat_test WHERE id_gestionnaire=$id_gestionnaire";
 				$rep1 = $db->query($req1);
@@ -99,6 +103,33 @@
 			?>
 
 		</section>
+
+		<div id="pre_register_form">
+			<form action="../../controller/pre_register.php" method="POST">
+
+				<h1>Pré-inscrire un utilisateur</h1>
+
+				<label><b>Email :</b></label>
+				<input type="email" name="adresse_mail" required>
+				<p>Un lien d'inscription sera envoyé à cette adresse mail</p>
+				<br>
+
+				<label><b>Etablissement :</b></label>
+				<select name='id_entite'>
+					<?php
+				  $req = $db->prepare("SELECT entite.id_entite, nom from entite INNER JOIN inscription ON entite.id_entite =  inscription.id_entite where id_utilisateur=:id_gestionnaire");
+				  $req->bindValue(':id_gestionnaire',$id_gestionnaire, PDO::PARAM_STR);
+				  $req->execute();
+					while ($entite=$req->fetch()) {
+						echo "<option value=".$entite['id_entite'].">".$entite['nom']."</option>";
+					}
+					?>
+				</select>
+				<br><br>
+				<input type="submit" class='confirm' value='Valider'><input type='button' class='cancel' value='Annuler' onclick="hide_pre_register_form()">
+
+			</form>
+		</div>
 
 		<?php include("../general/Footer.php"); ?>
 

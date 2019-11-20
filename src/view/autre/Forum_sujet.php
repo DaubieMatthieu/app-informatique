@@ -4,6 +4,7 @@
 	<head>
 		<meta charset="utf-8" />
 		<link rel="stylesheet" href="../../public/css/autre/Forum_sujet.css"/>
+		<script src='../../public/js/autre/Forum_sujet.js'></script>
 		<title>Sujets Forum</title>
 	</head>
 
@@ -72,12 +73,18 @@
                 $req3 = "SELECT nom, prenom, role FROM utilisateur where id_utilisateur=$id_utilisateur_message";
                 $rep3 = $db->query($req3);
                 $user=$rep3->fetch();
-                ?>
-                <br>
-                <div class="utilisateur"><?php echo $user['prenom']." ".$user['nom'].'<br>'.$user['role'];?></div>
-								<div class="date"><?php echo date('d/m/Y', strtotime($infos_message['date_poste'])).'<br>'.date('H:i', strtotime($infos_message['date_poste'])); ?></div>
-                <div class="texte"><?php echo $infos_message['message']; ?></div>
-                <?php
+								include_once('../../controller/convert_role.php');
+								$role=char_to_str($user['role']);
+								if ($role=='error') {
+									?><script type="text/javascript"> show_message("Erreur serveur au message d'id="+<?php echo $infos_message['id_message'] ?>,'red'); </script><?php
+								} else {
+									?>
+									<br>
+									<div class="utilisateur"><?php echo $user['prenom']." ".$user['nom'].'<br>'.char_to_str($user['role']);?></div>
+									<div class="date"><?php echo date('d/m/Y', strtotime($infos_message['date_poste'])).'<br>'.date('H:i', strtotime($infos_message['date_poste'])); ?></div>
+									<div class="texte"><?php echo $infos_message['message']; ?></div>
+									<?php
+								}
               } catch (Exception $e)
               {
                 ?><script type="text/javascript">
@@ -91,15 +98,21 @@
 					?>
 					<a id="last_message"></a>
         </div>
-        <div id='post'>
-          <form method= 'POST' action="../../controller/message_post.php">
-            <input name='id_sujet' type='hidden' value=<?php echo $id_sujet; ?>>
-            <input name='message' type='text' placeholder="Rédiger une réponse" minlength='1' required>
-            <input type='submit' value='Envoyer'>
-          </form>
-        </div>
+
+				<button type='button' id='new_message' onclick='show_new_message_form()'>Répondre</button>
 
 		</section>
+
+		<div id="new_message_form">
+			<form action="../../controller/message_post.php" method="POST">
+				<h1>Répondre</h1>
+
+				<input name='id_sujet' type='hidden' value=<?php echo $id_sujet; ?>>
+				<textarea name='message' rows="5" cols="33" placeholder="Rédiger une réponse" minlength='1' required></textarea>
+				<br><br>
+				<input type="submit" class='confirm' value='Valider'><input type='button' class='cancel' value='Annuler' onclick="hide_new_message_form()">
+			</form>
+		</div>
 
 		<?php include("../general/Footer.php"); ?>
 

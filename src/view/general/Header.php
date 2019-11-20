@@ -18,24 +18,14 @@ session_start();
 			<?php
 			if (isset($_SESSION['role'])) //si l'utilisateur est connecté et qu'il a un role
 			{
-				if ($_SESSION['role']==='A') {
-					$role="Administrateur";
-					$accueil="../accueil/Accueil_admin.php";
-				}
-				if ($_SESSION['role']==='G') {
-					$role="Gestionnaire";
-					$accueil="../accueil/Accueil_gestionnaire.php";
-				}
-				if ($_SESSION['role']==='U') {
-					$role="Utilisateur";
-					$accueil="../accueil/Accueil_utilisateur.php";
-				}
-
+				include_once('../../controller/convert_role.php');
+				$role=char_to_str($_SESSION['role']);
+				if ($role=="Administrateur") {$accueil="../accueil/Accueil_admin.php";}
+				if ($role=="Gestionnaire") {$accueil="../accueil/Accueil_gestionnaire.php";}
+				if ($role=="Utilisateur") {$accueil="../accueil/Accueil_utilisateur.php";}
 				//si la variable $role n'a pas été défini, la session est mal définie, on lui demande donc de se reconnecter
-				if (!isset($role)) {header('Location:../loggedout/Connexion?error=5.php');exit;}
-
+				if ($role=='error') {header('Location:../loggedout/Connexion?error=5.php');exit;}
 				echo '<li id="menu">'.$role.'<ul>';//début du menu déroulant
-
 				//variation en fonction de la page demandé
 				if(basename($_SERVER['PHP_SELF']) =='Profil.php') {echo '<li><a href='.$accueil.'>Accueil</a></li>';}
 				else {echo '<li><a href="../autre/Profil.php">Profil</a></li>';}

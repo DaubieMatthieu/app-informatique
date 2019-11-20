@@ -25,7 +25,8 @@
 				<h1> Gérer les utilisateurs </h1></br>
 				<form method="post" action="Accueil_admin.php">
 					<input type="search" name="search" autocomplete="off" placeholder="Rechercher un utilisateur" size="64" maxlength="64"/>
-				</form>
+				</form><br>
+				<button type='button' class='pre_register_button' onclick='show_pre_register_form()'>Pré-inscription</button>
 			</nav>
 
 			<!--section affichage tableau des utilisateurs-->
@@ -92,9 +93,8 @@
 			            <td><?php echo $user['prenom']; ?></td>
 			            <td><?php echo $user['adresse_mail']; ?></td>
 									<?php
-									if ($user['role']==='A') {$role='Administrateur';}
-									if ($user['role']==='G') {$role='Gestionnaire';}
-									if ($user['role']==='U') {$role='Utilisateur';}
+									include_once('../../controller/convert_role.php');
+									$role=char_to_str($user['role']);
 									?>
 									<td><?php echo $role; ?></td>
 									<td>
@@ -176,6 +176,34 @@
 				</select>
 				<br><br>
 				<input type="submit" class='confirm' value='Valider'><input type='button' class='cancel' value='Annuler' onclick="hide_edit_form()">
+
+			</form>
+		</div>
+
+
+		<div id="pre_register_form">
+			<form action="../../controller/pre_register.php" method="POST">
+
+				<h1>Pré-inscrire un gestionnaire</h1>
+
+				<label><b>Email :</b></label>
+				<input type="email" name="adresse_mail" required>
+				<p>Un lien d'inscription sera envoyé à cette adresse mail</p>
+				<br>
+
+				<label><b>Etablissement :</b></label>
+				<select name='id_entite' required>
+					<?php
+				  $req = $db->prepare("SELECT id_entite, nom from entite");
+				  $req->bindValue(':id_gestionnaire',$id_gestionnaire, PDO::PARAM_STR);
+				  $req->execute();
+					while ($entite=$req->fetch()) {
+						echo "<option value=".$entite['id_entite'].">".$entite['nom']."</option>";
+					}
+					?>
+				</select>
+				<br><br>
+				<input type="submit" class='confirm' value='Valider'><input type='button' class='cancel' value='Annuler' onclick="hide_pre_register_form()">
 
 			</form>
 		</div>

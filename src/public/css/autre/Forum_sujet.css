@@ -8,11 +8,11 @@ section
 }
 
 section h1 {
-    position: relative;
-    margin-top: 5%;
-    margin-bottom: 3%;
-    text-align: center;
-    font-size: 30px;
+  position: relative;
+  margin-top: 3%;
+  margin-bottom: 3%;
+  text-align: center;
+  font-size: 30px;
 }
 
 #conversation {
@@ -103,43 +103,102 @@ section h1 {
   color: white;
 }
 
-#post {
-  width: 70%;
-  position: sticky;
-  margin: auto;
-  height: auto;
+section #new_message {
+	background-color: #59adde;
+	color: white;
+	padding: 14px 20px;
+	border: none;
+	outline: none;
+	border-radius: 5px;
+	display: block;
+	margin: auto;
+  margin-top: 3%;
+  margin-bottom: 3%;
+	}
+
+	section #new_message:hover {
+	background-color: white;
+	color: #59adde;
+  outline: 1px solid #59adde;
 }
 
-#post form {
-  width:100%;
-  display: block;
-  padding: 10px;
+:root {
+  --cancel_color: #ff476f;
+  --delete_color: #59adde;
 }
 
-#post input[type='text'] {
-  float: left;
-  width: 80%;
+/*fomulaire de création de sujet*/
+
+#new_message_form {
+	width: 100%;
+	height:100%;
+	z-index:2;
+	position:absolute;
+	top:0;
+	bottom:0;
+	left: 0;
+	right: 0;
+	margin: auto;
+	display: flex;
+	visibility: hidden;
+	opacity: 0;
+  transition: visibility 0.3s, opacity 0.3s linear;
+	background-color:rgba(255,255,255,0.5);
+}
+
+#new_message_form form {
+	position:relative;
+	margin:auto;
+  width:400px;
+  padding: 29px;
+  border: 1px solid #f1f1f1;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+	background-color: white;
+}
+
+#new_message_form h1{
+  width: 38%;
+  margin: 0 auto;
+  padding-bottom: 10px;
+  text-align: center;
+}
+
+#new_message_form textarea {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+#new_message_form input[type=submit], #new_message_form input[type=button]{
+	outline: none;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 2px;
   border: none;
-  outline: none;
-  border-radius: 1.3em;
-  background-color: rgba(0, 0, 0, .05);
-  padding: 6px 12px;
-  font-size: 18px;
+  cursor: pointer;
+  width: 196px;
+  border: 1px solid white;
 }
 
-#post input[type='submit'] {
-  float: right;
-  width: 10%;
-  border:none;
-  outline:none;
-  padding: 6px 12px;
-  font-size: 18px;
-  border-radius: 1.3em;
-  color:black;
-  background-color: rgb(232, 234, 237);
+#new_message_form input[type=button].cancel {
+  background-color: var(--cancel_color);
 }
 
-#post input[type='submit']:hover {
-  background-color: #1a73e8;
-  color:white;
+#new_message_form input[type=button].cancel:hover {
+  background-color: white;
+  color: var(--cancel_color);
+  border-color: var(--cancel_color);
+}
+
+#new_message_form input[type=submit].confirm {
+  background-color: var(--delete_color);
+}
+
+#new_message_form input[type=submit].confirm:hover {
+    background-color: white;
+    color: var(--delete_color);
+    border-color: var(--delete_color);
 }

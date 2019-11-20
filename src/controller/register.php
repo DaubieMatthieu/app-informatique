@@ -33,10 +33,9 @@ if($nom == "" || $prenom == "" || $adresse_mail == "" || $mot_de_passe == "") //
 }
 
 try {
-  $check = $db->prepare("SELECT id_utilisateur from utilisateur where adresse_mail=:adresse_mail");
+  $check = $db->prepare("SELECT nom, prenom, mot_de_passe from utilisateur where adresse_mail=:adresse_mail");
   $check->bindValue(':adresse_mail',$adresse_mail, PDO::PARAM_STR);
   $check->execute();
-  $check->closeCursor();
 }
 catch(Exception $e)
 {
@@ -44,20 +43,26 @@ catch(Exception $e)
   exit;
 }
 
-if($check->rowCount() !== 0)  // adresse mail utilisée
+if($check->rowCount() == 0)
 {
-  header('Location:../view/loggedout/Inscription.php?error=4'); // adresse mail déjà utilisée
+  header('Location:../view/loggedout/Inscription.php?error=8'); // adresse mail non pré-enregistré
   exit;
+} else {
+  $profil=$check->fetch();
+  if ($profil['nom']!==NULL || $profil['prenom']!==NULL || $profil['mot_de_passe']!==NULL) {
+    header('Location:../view/loggedout/Inscription.php?error=4'); // adresse mail déjà utilisée
+    exit;
+  }
 }
 
 try {
-  $req = $db->prepare("INSERT INTO utilisateur(`nom`,`prenom`, `adresse_mail`, `mot_de_passe`, `role`) VALUES (:nom,:prenom,:adresse_mail,:mot_de_passe,'U')");
+  $req = $db->prepare("UPDATE utilisateur SET nom=:nom, prenom=:prenom, mot_de_passe=:mot_de_passe WHERE adresse_mail=:adresse_mail");
   $req->bindValue(':nom', $nom, PDO::PARAM_STR);
   $req->bindValue(':prenom', $prenom, PDO::PARAM_STR);
-  $req->bindValue(':adresse_mail', $adresse_mail, PDO::PARAM_STR);
   // Encode to SHA256
   $mot_de_passe = hash('sha256', $mot_de_passe);
   $req->bindValue(':mot_de_passe', $mot_de_passe, PDO::PARAM_STR);
+  $req->bindValue(':adresse_mail', $adresse_mail, PDO::PARAM_STR);
   $req->execute();
   $req->closeCursor();
   header('Location:../view/loggedout/Connexion.php?success=register'); //utilisateur ajouté

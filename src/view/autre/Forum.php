@@ -114,8 +114,8 @@
 				<label><b>Titre :</b></label>
 				<input type="text" name="titre" minlength=5 required>
 				<br>
-				<label><b>Description :</b></label>
-				<input type="text" name="message" minlength=5 required>
+				<label><b>Description :</b></label><br>
+				<textarea name='message' rows="5" cols="33" placeholder="Rédiger une réponse" minlength='5' required></textarea>
 				<br><br>
 				<input type="submit" class='confirm' value='Valider'><input type='button' class='cancel' value='Annuler' onclick="hide_new_subject_form()">
 			</form>
