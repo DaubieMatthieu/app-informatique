@@ -32,15 +32,10 @@
 			<!--section affichage tableau des utilisateurs-->
 
 			<?php
-
-			$db_username = 'root';
-			$db_password = '';
-			$db_name     = 'infinite_sense';
-			$db_host     = 'localhost';
-			try
-			{
-				$db = new PDO('mysql:host='.$db_host.';dbname='.$db_name, $db_username, $db_password, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION ));
-			} catch (Exception $e) {
+			//connexion à la base de données
+			include('../model/db_connect.php');
+			$db = db_connect();
+			if ($db===false) {
 				?><script> show_message('Connexion à la base de donnée impossible','red'); </script><?php
 				exit;
 			}
@@ -160,10 +155,10 @@
 				<input type="number" name="id_utilisateur" readonly='readonly' required>
 				<p><em>Vous ne pouvez pas modifier l'id</em></p></br>
 				<label><b>Nom :</b></label>
-				<input type="text" name="nom" required>
+				<input type="text" name="nom">
 				<br>
 				<label><b>Prénom :</b></label>
-				<input type="text" name="prenom" required>
+				<input type="text" name="prenom">
 				<br>
 				<label><b>Email :</b></label>
 				<input type="email" name="adresse_mail" required>

@@ -7,18 +7,12 @@ if(!isset($_POST['adresse_mail']) || !isset($_POST['mot_de_passe']))
    exit;
 }
   // connexion à la base de données
-$db_username = 'root';
-$db_password = '';
-$db_name     = 'infinite_sense';
-$db_host     = 'localhost';
-
-try
-{
-  $db =  new PDO('mysql:host='.$db_host.';dbname='.$db_name, $db_username, $db_password, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION ));
-} catch (Exception $e) {
-  header('Location:../view/loggedout/Connexion.php?error=0');
-  exit;
-}
+  include('../model/db_connect.php');
+  $db = db_connect();
+  if ($db===false) {
+    header('Location:../view/loggedout/Connexion.php?error=0');
+    exit;
+  }
 
 $adresse_mail = htmlspecialchars($_POST['adresse_mail']);
 $mot_de_passe = htmlspecialchars($_POST['mot_de_passe']);
