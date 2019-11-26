@@ -93,7 +93,7 @@
 			            <td><?php echo $user['prenom']; ?></td>
 			            <td><?php echo $user['adresse_mail']; ?></td>
 									<?php
-									include_once('../../controller/convert_role.php');
+									include_once('../../model/convert_role.php');
 									$role=char_to_str($user['role']);
 									?>
 									<td><?php echo $role; ?></td>

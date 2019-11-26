@@ -18,7 +18,7 @@ session_start();
 			<?php
 			if (isset($_SESSION['role'])) //si l'utilisateur est connecté et qu'il a un role
 			{
-				include_once('../../controller/convert_role.php');
+				include_once('../../model/convert_role.php');
 				$role=char_to_str($_SESSION['role']);
 				if ($role=="Administrateur") {$accueil="../accueil/Accueil_admin.php";}
 				if ($role=="Gestionnaire") {$accueil="../accueil/Accueil_gestionnaire.php";}

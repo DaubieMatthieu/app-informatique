@@ -73,7 +73,7 @@
                 $req3 = "SELECT nom, prenom, role FROM utilisateur where id_utilisateur=$id_utilisateur_message";
                 $rep3 = $db->query($req3);
                 $user=$rep3->fetch();
-								include_once('../../controller/convert_role.php');
+								include_once('../../model/convert_role.php');
 								$role=char_to_str($user['role']);
 								if ($role=='error') {
 									?><script type="text/javascript"> show_message("Erreur serveur au message d'id="+<?php echo $infos_message['id_message'] ?>,'red'); </script><?php
