@@ -23,15 +23,10 @@
 
 
 			<?php
-
-			$db_username = 'root';
-			$db_password = '';
-			$db_name     = 'infinite_sense';
-			$db_host     = 'localhost';
-			try
-			{
-				$db = new PDO('mysql:host='.$db_host.';dbname='.$db_name, $db_username, $db_password, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION ));
-			} catch (Exception $e) {
+			// connexion à la base de données
+			include('../../model/db_connect.php');
+			$db = db_connect();
+			if ($db===false) {
 				?><script> show_message('Connexion à la base de donnée impossible','red'); </script><?php
 				exit;
 			}

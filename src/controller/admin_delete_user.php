@@ -1,20 +1,14 @@
 <?php
+session_start();
 if (!isset($_POST['id_utilisateur']))
 {
    header('Location: ../view/accueil/Accueil_admin.php?error=1.1'); //echec de l'envoi du formulaire
    exit;
 }
 // connexion à la base de données
-$db_username = 'root';
-$db_password = '';
-$db_name     = 'infinite_sense';
-$db_host     = 'localhost';
-
-try
-{
-  $db = new PDO('mysql:host='.$db_host.';dbname='.$db_name, $db_username, $db_password, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION ));
-} catch (Exception $e)
-{
+include('../model/db_connect.php');
+$db = db_connect();
+if ($db===false) {
   header('Location:../view/accueil/Accueil_admin.php?error=0');
   exit;
 }

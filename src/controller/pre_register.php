@@ -7,16 +7,9 @@ if(!isset($_POST['adresse_mail']) || !isset($_POST['id_entite']) || !isset($_SES
   exit;
 }
 // connexion à la base de données
-$db_username = 'root';
-$db_password = '';
-$db_name     = 'infinite_sense';
-$db_host     = 'localhost';
-
-try
-{
-  $db = new PDO('mysql:host='.$db_host.';dbname='.$db_name, $db_username, $db_password, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION ));
-} catch (Exception $e)
-{
+include('../model/db_connect.php');
+$db = db_connect();
+if ($db===false) {
   header('Location:../view/accueil/Accueil_gestionnaire.php?error=0');
   exit;
 }
@@ -24,6 +17,7 @@ try
 $adresse_mail = htmlspecialchars($_POST['adresse_mail']);
 $id_entite = htmlspecialchars($_POST['id_entite']);
 $role_logger = htmlspecialchars($_SESSION['role']);
+$id_logger = htmlspecialchars($_SESSION['id_utilisateur']);
 
 if($adresse_mail == "" || $id_entite == "" || $role_logger == "") //vérification des données envoyées
 {
@@ -64,7 +58,15 @@ try {
   $req2->bindValue(':id_utilisateur', $id_utilisateur, PDO::PARAM_STR);
   $req2->execute();
   $req2->closeCursor();
-  
+
+  $changement_utilisateur = "Pré-inscription de l'utilisateur d'id:".$id_utilisateur." et d'adresse mail:".$adresse_mail;
+  $gestion = $db->prepare("INSERT INTO `gestion_utilisateur`(`id_admin`, `id_utilisateur`, `action`, `date_gestion`, `changement_utilisateur`) VALUES (:id_logger,:id_utilisateur,'R',NOW(),:changement_utilisateur)");
+  $gestion->bindValue(':id_logger',$id_logger, PDO::PARAM_INT);
+  $gestion->bindValue(':id_utilisateur',$id_utilisateur, PDO::PARAM_INT);
+  $gestion->bindValue(':changement_utilisateur',$changement_utilisateur, PDO::PARAM_STR);
+  $gestion->execute();
+  $gestion->closeCursor();
+
   if ($role_logger=='A') {header('Location:../view/accueil/Accueil_admin.php?success=pre_register');} //gestionnaire pre_enregistré
   if ($role_logger=='G') {header('Location:../view/accueil/Accueil_gestionnaire.php?success=pre_register');} //utilisateur pre_enregistré
   exit;
