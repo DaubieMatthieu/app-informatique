@@ -72,10 +72,10 @@ try {
   exit;
 }
 catch(Exception $e)
-{
-  //header('Location:../view/accueil/Accueil_gestionnaire.php?error=2.2'); //echec de l'insertion des données
+{ //echec de l'insertion des données
+  if ($role_logger=='A') {header('Location:../view/accueil/Accueil_admin.php?error=2.2');}
+  if ($role_logger=='G') {header('Location:../view/accueil/Accueil_gestionnaire.php?error=2.2');}
   exit;
 }
-
 
 ?>

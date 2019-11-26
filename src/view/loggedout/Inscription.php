@@ -28,11 +28,11 @@
 
 							<h1>Inscription</h1>
 
-							<label><b>Nom</b></label>
-							<input type="text" placeholder="Entrer votre nom" name="nom" required autofocus>
-
 							<label><b>Prénom</b></label>
-							<input type="text" placeholder="Entrer votre prénom" name="prenom" required>
+							<input type="text" placeholder="Entrer votre prénom" name="prenom" required autofocus>
+
+							<label><b>Nom</b></label>
+							<input type="text" placeholder="Entrer votre nom" name="nom" required>
 
 							<label><b>Email</b></label>
 							<input type="email" placeholder="Entrer votre adresse mail" name="adresse_mail" value='<?php echo $adresse_mail; ?>' required>

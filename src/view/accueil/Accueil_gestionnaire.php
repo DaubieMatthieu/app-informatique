@@ -32,10 +32,8 @@
 			}
 
 			try {
-
 				$id_gestionnaire=$_SESSION['id_utilisateur'];
-				$req1 = "SELECT DISTINCT id_utilisateur FROM `inscription` i1 WHERE EXISTS (Select id_entite from `inscription` i2 where i2.id_utilisateur = $id_gestionnaire AND i1.id_entite = i2.id_entite)";
-				//$req1 = "SELECT id_utilisateur FROM inscription WHERE id_gestionnaire=$id_gestionnaire";
+				$req1 = "SELECT DISTINCT i1.id_utilisateur FROM `inscription` i1 INNER JOIN `utilisateur` ON i1.id_utilisateur =  utilisateur.id_utilisateur WHERE EXISTS (Select id_entite from `inscription` i2 where i2.id_utilisateur = $id_gestionnaire AND i1.id_entite = i2.id_entite AND utilisateur.role='U')";
 				$rep1 = $db->query($req1);
 				$liste_utilisateurs=array(-1);
 				while ($user=$rep1->fetch()) {
@@ -78,7 +76,7 @@
 										$req3 = "SELECT id_resultat FROM resultat_test where id_utilisateur=$id_utilisateur && id_gestionnaire=$id_gestionnaire";
 										$rep3 = $db->query($req3);
 										?>
-										<td><?php echo $user['nom']." ".$user['prenom']."<br>".$user['adresse_mail']; ?></td>
+										<td><?php echo $user['prenom']." ".$user['nom']."<br>".$user['adresse_mail']; ?></td>
 										<td><?php echo $rep3->rowCount(); ?></td>
 										<td><button  class='detail_button' onclick="window.location.href='../autre/Gestionnaire_detail_utilisateur.php?id_utilisateur=<?php echo $id_utilisateur; ?>'"></button></td>
 										<?php

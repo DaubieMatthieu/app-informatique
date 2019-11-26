@@ -16,10 +16,10 @@ DROP TABLE IF EXISTS utilisateur;
 
 CREATE TABLE utilisateur(
 	id_utilisateur INT AUTO_INCREMENT PRIMARY KEY,
-	nom VARCHAR(30) NOT NULL,
-	prenom VARCHAR(30) NOT NULL,
+	prenom VARCHAR(30) DEFAULT NULL,
+	nom VARCHAR(30) DEFAULT NULL,
 	adresse_mail VARCHAR(50) NOT NULL UNIQUE,
-	mot_de_passe VARCHAR(255) NOT NULL,
+	mot_de_passe VARCHAR(255) DEFAULT NULL,
 	role CHAR NOT NULL
 );
 
@@ -111,21 +111,21 @@ CREATE TABLE message_forum(
 	CONSTRAINT fk_message_forum_utilisateur FOREIGN KEY (id_utilisateur) REFERENCES utilisateur(id_utilisateur)
 );
 
-INSERT INTO utilisateur (nom, prenom, adresse_mail, mot_de_passe, role) VALUES 
+INSERT INTO utilisateur (prenom, nom, adresse_mail, mot_de_passe, role) VALUES
 ('Jean','Jacques','jean.jacques@infinitesense.fr', SHA2('introuvable',256),'U'),
 ('Paul','Pierre','paul.pierre@infinitesense.fr', SHA2('introuvable',256),'U'),
 ('Tom','Pot','tom.pot@infinitesense.fr', SHA2('introuvable',256),'U'),
-('Thierry','Gérard','thierry.gerard@infinitesense.fr', SHA2('introuvable',256),'G'),
+('Thierry','GÃ©rard','thierry.gerard@infinitesense.fr', SHA2('introuvable',256),'G'),
 ('Didier','Robert','didier.robert@infinitesense.fr', SHA2('introuvable',256),'G'),
 ('John','Rambo','john.rambo@infinitesense.fr', SHA2('introuvable',256),'A');
 
 INSERT INTO test (type_test, description) VALUES
-('Fréquence cardiaque', 'ça sert à mesurer combien ton coeur il bat'),
+('FrÃ©quence cardiaque', 'Ã§a sert à mesurer combien ton coeur il bat'),
 ('Mesure du stress', 'pour savoir comment tu stress'),
-('Réflexes', 'montre comment t\'es rapide');
+('RÃ©flexes', 'montre comment t\'es rapide');
 
 INSERT INTO entite (nom, adresse) VALUES
-('Autoécole','Pas trop loin'),
+('AutoÃ©cole','Pas trop loin'),
 ('Ecole de pilotes','Un peu plus loin là'),
 ('Labo de recherche','Quelque part là-bas');
 
@@ -133,16 +133,34 @@ INSERT INTO boitier_capteur (id_entite) VALUES
 (1),(1),(2),(2),(3),(3);
 
 INSERT INTO inscription (id_entite, id_utilisateur) VALUES
-(1,1),(2,1),(3,2),(3,3),(4,1),(4,2),(5,3);
+(1, 1),
+(2, 1),
+(3, 2),
+(3, 3),
+(2, 4),
+(2, 2),
+(1, 4),
+(2, 5),
+(3, 5);
 
 INSERT INTO question_faq (question, reponse) VALUES
-('J\'ai du mal à dormir, comment ça se fait ?','C\'est très simple Benjamin'),
-('Pourquoi j\'ai des mycoses ?','C\'est très simple Benjamin'),
-('Pourquoi ma vie est nulle ?','C\'est très simple Benjamin');
+('J\'ai du mal à dormir, comment Ã§a se fait ?','C\'est trÃ¨s simple Benjamin'),
+('Pourquoi j\'ai des mycoses ?','C\'est trÃ¨s simple Benjamin'),
+('Pourquoi ma vie est nulle ?','C\'est trÃ¨s simple Benjamin');
 
 INSERT INTO resultat_test (id_gestionnaire, id_utilisateur, id_test, id_boitier, valeur, unite, score, statut, date_resultat) VALUES
-(4,1,1,1,60,'bpm',500,'F','2019-10-25 09:30:00'),
-(4,2,1,2,70,'bpm',600,'F','2019-10-25 10:30:00'),
-(4,2,3,3,0.1,'s',750,'F','2019-10-25 11:30:00'),
-(4,3,2,4,40,'°C',500,'F','2019-10-25 12:30:00'),
-(5,3,3,5,0.2,'s',630,'F','2019-10-25 13:30:00');
+(4, 1, 1, 1, 60, 'bpm', 500, 'F', '2019-10-25 09:30:00'),
+(4, 2, 1, 2, 70, 'bpm', 600, 'F', '2019-10-25 10:30:00'),
+(5, 2, 3, 3, 0.1, 's', 750, 'F', '2019-10-25 11:30:00'),
+(5, 3, 2, 4, 40, '°C', 500, 'F', '2019-10-25 12:30:00'),
+(5, 3, 3, 5, 0.2, 's', 630, 'F', '2019-10-25 13:30:00');
+
+INSERT INTO `sujet_forum` (id_utilisateur, titre, date_creation_sujet) VALUES
+(6, 'J\'ai du mal Ã  dormir comment Ã§a se fait ?', '2019-11-26 17:16:19'),
+(2, 'Pourquoi ma vie est nulle ?', '2019-11-26 17:17:22');
+
+INSERT INTO `message_forum` (id_sujet, id_utilisateur, message, date_poste) VALUES
+(1, 6, 'J\'ai du mal Ã  dormir comment Ã§a se fait ?', '2019-11-26 17:16:19'),
+(1, 3, 'C\'est trÃ¨s simple Benjamin', '2019-11-26 17:16:48'),
+(2, 2, 'Pourquoi ma vie est nulle ?', '2019-11-26 17:17:22'),
+(2, 3, 'C\'est trÃ¨s simple Benjamin', '2019-11-26 17:17:43');

@@ -70,8 +70,8 @@
 					<table>
 						<thead>
 							<tr>
-								<th>Nom</th>
 								<th>Prénom</th>
+								<th>Nom</th>
 								<th>Email</th>
 								<th>Type d'utilisateur</th>
 								<th>Action</th>
@@ -84,8 +84,8 @@
 			      	while ($user=$rep->fetch()) {
 							?>
 				        <tr>
-			            <td><?php echo $user['nom']; ?></td>
 			            <td><?php echo $user['prenom']; ?></td>
+			            <td><?php echo $user['nom']; ?></td>
 			            <td><?php echo $user['adresse_mail']; ?></td>
 									<?php
 									include_once('../../model/convert_role.php');
@@ -126,11 +126,11 @@
 
 				<label><b>Id :</b></label>
 				<input type="number" name="id_utilisateur" readonly='readonly' required>
-				<label><b>Nom :</b></label>
-				<input type="text" name="nom" readonly="readonly" required>
-				<br>
 				<label><b>Prénom :</b></label>
 				<input type="text" name="prenom" readonly="readonly" required>
+				<br>
+				<label><b>Nom :</b></label>
+				<input type="text" name="nom" readonly="readonly" required>
 				<br>
 				<label><b>Email :</b></label>
 				<input type="email" name="adresse_mail" readonly="readonly" required>
@@ -154,11 +154,11 @@
 				<label><b>Id :</b></label>
 				<input type="number" name="id_utilisateur" readonly='readonly' required>
 				<p><em>Vous ne pouvez pas modifier l'id</em></p></br>
-				<label><b>Nom :</b></label>
-				<input type="text" name="nom">
-				<br>
 				<label><b>Prénom :</b></label>
 				<input type="text" name="prenom">
+				<br>
+				<label><b>Nom :</b></label>
+				<input type="text" name="nom">
 				<br>
 				<label><b>Email :</b></label>
 				<input type="email" name="adresse_mail" required>

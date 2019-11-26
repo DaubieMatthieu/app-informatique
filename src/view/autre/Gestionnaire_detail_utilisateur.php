@@ -40,7 +40,7 @@
 			}
       ?>
 
-			<h1> Détail de l'utilisateur <?php echo $nom.' '.$prenom?></h1></br>
+			<h1> Détail de l'utilisateur <?php echo $prenom.' '.$nom?></h1></br>
 
 			<!--section affichage tableau des résultats-->
       <?php
