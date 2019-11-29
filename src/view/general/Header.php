@@ -33,7 +33,7 @@ session_start();
 				//si la variable $role n'a pas été défini, la session est mal définie, on lui demande donc de se reconnecter
 				if (!isset($role)) {header('Location:../loggedout/Connexion?error=5.php');exit;}
 
-				echo '<li id="menu">'.$role.'<ul>';//début du menu déroulant
+				echo '<li id="menu">'.$_SESSION['nom'].' '.$_SESSION['prenom'].'<ul>';//début du menu déroulant
 
 				//variation en fonction de la page demandé
 				if(basename($_SERVER['PHP_SELF']) =='Profil.php') {echo '<li><a href='.$accueil.'>Accueil</a></li>';}
