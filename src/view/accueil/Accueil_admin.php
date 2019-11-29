@@ -25,21 +25,17 @@
 				<h1> Gérer les utilisateurs </h1></br>
 				<form method="post" action="Accueil_admin.php">
 					<input type="search" name="search" autocomplete="off" placeholder="Rechercher un utilisateur" size="64" maxlength="64"/>
-				</form>
+				</form><br>
+				<button type='button' class='pre_register_button' onclick='show_pre_register_form()'>Pré-inscription</button>
 			</nav>
 
 			<!--section affichage tableau des utilisateurs-->
 
 			<?php
-
-			$db_username = 'root';
-			$db_password = '';
-			$db_name     = 'infinite_sense';
-			$db_host     = 'localhost';
-			try
-			{
-				$db = new PDO('mysql:host='.$db_host.';dbname='.$db_name, $db_username, $db_password, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION ));
-			} catch (Exception $e) {
+			//connexion à la base de données
+			include('../../model/db_connect.php');
+			$db = db_connect();
+			if ($db===false) {
 				?><script> show_message('Connexion à la base de donnée impossible','red'); </script><?php
 				exit;
 			}
@@ -52,8 +48,9 @@
 					foreach($keywords as $keyword) {
 						$req .= " OR concat(nom,prenom,adresse_mail) LIKE '%$keyword%'";
 					}
+					$req .=' ORDER BY role DESC, nom ASC';
 				} else {
-					$req = "SELECT * FROM utilisateur";
+					$req = "SELECT * FROM utilisateur ORDER BY role DESC, nom ASC";
 				}
 				$rep = $db->query($req);
 
@@ -73,8 +70,8 @@
 					<table>
 						<thead>
 							<tr>
-								<th>Nom</th>
 								<th>Prénom</th>
+								<th>Nom</th>
 								<th>Email</th>
 								<th>Type d'utilisateur</th>
 								<th>Action</th>
@@ -87,13 +84,12 @@
 			      	while ($user=$rep->fetch()) {
 							?>
 				        <tr>
-			            <td><?php echo $user['nom']; ?></td>
 			            <td><?php echo $user['prenom']; ?></td>
+			            <td><?php echo $user['nom']; ?></td>
 			            <td><?php echo $user['adresse_mail']; ?></td>
 									<?php
-									if ($user['role']==='A') {$role='Administrateur';}
-									if ($user['role']==='G') {$role='Gestionnaire';}
-									if ($user['role']==='U') {$role='Utilisateur';}
+									include_once('../../model/convert_role.php');
+									$role=char_to_str($user['role']);
 									?>
 									<td><?php echo $role; ?></td>
 									<td>
@@ -130,11 +126,11 @@
 
 				<label><b>Id :</b></label>
 				<input type="number" name="id_utilisateur" readonly='readonly' required>
-				<label><b>Nom :</b></label>
-				<input type="text" name="nom" readonly="readonly" required>
-				<br>
 				<label><b>Prénom :</b></label>
 				<input type="text" name="prenom" readonly="readonly" required>
+				<br>
+				<label><b>Nom :</b></label>
+				<input type="text" name="nom" readonly="readonly" required>
 				<br>
 				<label><b>Email :</b></label>
 				<input type="email" name="adresse_mail" readonly="readonly" required>
@@ -158,11 +154,11 @@
 				<label><b>Id :</b></label>
 				<input type="number" name="id_utilisateur" readonly='readonly' required>
 				<p><em>Vous ne pouvez pas modifier l'id</em></p></br>
-				<label><b>Nom :</b></label>
-				<input type="text" name="nom" required>
-				<br>
 				<label><b>Prénom :</b></label>
-				<input type="text" name="prenom" required>
+				<input type="text" name="prenom">
+				<br>
+				<label><b>Nom :</b></label>
+				<input type="text" name="nom">
 				<br>
 				<label><b>Email :</b></label>
 				<input type="email" name="adresse_mail" required>
@@ -175,6 +171,34 @@
 				</select>
 				<br><br>
 				<input type="submit" class='confirm' value='Valider'><input type='button' class='cancel' value='Annuler' onclick="hide_edit_form()">
+
+			</form>
+		</div>
+
+
+		<div id="pre_register_form">
+			<form action="../../controller/pre_register.php" method="POST">
+
+				<h1>Pré-inscrire un gestionnaire</h1>
+
+				<label><b>Email :</b></label>
+				<input type="email" name="adresse_mail" required>
+				<p>Un lien d'inscription sera envoyé à cette adresse mail</p>
+				<br>
+
+				<label><b>Etablissement :</b></label>
+				<select name='id_entite' required>
+					<?php
+				  $req = $db->prepare("SELECT id_entite, nom from entite");
+				  $req->bindValue(':id_gestionnaire',$id_gestionnaire, PDO::PARAM_STR);
+				  $req->execute();
+					while ($entite=$req->fetch()) {
+						echo "<option value=".$entite['id_entite'].">".$entite['nom']."</option>";
+					}
+					?>
+				</select>
+				<br><br>
+				<input type="submit" class='confirm' value='Valider'><input type='button' class='cancel' value='Annuler' onclick="hide_pre_register_form()">
 
 			</form>
 		</div>

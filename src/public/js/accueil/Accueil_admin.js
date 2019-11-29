@@ -16,7 +16,7 @@ function show_delete_form(line) {
 
   delete_form.style.visibility='visible';
   delete_form.style.opacity='1';
-  setTimeout(function(){delete_form.getElementsByTagName('input')[6].focus();},100);
+  setTimeout(function(){delete_form.getElementsByTagName('input')[5].focus();},100);
 }
 
 function hide_delete_form() {
@@ -53,4 +53,18 @@ function hide_edit_form() {
   var edit_form=document.getElementById('edit_form');
   edit_form.style.visibility='hidden';
   edit_form.style.opacity='0';
+}
+
+function show_pre_register_form(line){
+  var pre_register_form=document.getElementById('pre_register_form')
+
+  pre_register_form.style.visibility='visible';
+  pre_register_form.style.opacity='1';
+  setTimeout(function(){pre_register_form.getElementsByTagName('input')[2].focus();},100);
+}
+
+function hide_pre_register_form() {
+  var pre_register_form=document.getElementById('pre_register_form');
+  pre_register_form.style.visibility='hidden';
+  pre_register_form.style.opacity='0';
 }

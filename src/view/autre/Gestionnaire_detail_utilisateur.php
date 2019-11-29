@@ -19,15 +19,10 @@
       <?php
       $id_utilisateur=$_GET['id_utilisateur'];
       $id_gestionnaire=$_SESSION['id_utilisateur'];
-
-			$db_username = 'root';
-			$db_password = '';
-			$db_name     = 'infinite_sense';
-			$db_host     = 'localhost';
-			try
-			{
-				$db = new PDO('mysql:host='.$db_host.';dbname='.$db_name, $db_username, $db_password, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION ));
-			} catch (Exception $e) {
+			// connexion à la base de données
+			include('../../model/db_connect.php');
+			$db = db_connect();
+			if ($db===false) {
 				?><script> show_message('Connexion à la base de donnée impossible','red'); </script><?php
 				exit;
 			}
@@ -45,7 +40,7 @@
 			}
       ?>
 
-			<h1> Détail de l'utilisateur <?php echo $nom.' '.$prenom?></h1></br>
+			<h1> Détail de l'utilisateur <?php echo $prenom.' '.$nom?></h1></br>
 
 			<!--section affichage tableau des résultats-->
       <?php
