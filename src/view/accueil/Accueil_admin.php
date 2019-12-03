@@ -23,7 +23,7 @@
 
 			<nav>
 				<h1> Gérer les utilisateurs </h1></br>
-				<form method="post" action="Accueil_admin.php">
+				<form method="get" action="Accueil_admin.php">
 					<input type="search" name="search" autocomplete="off" placeholder="Rechercher un utilisateur" size="64" maxlength="64"/>
 				</form><br>
 				<button type='button' class='pre_register_button' onclick='show_pre_register_form()'>Pré-inscription</button>
@@ -41,8 +41,8 @@
 			}
 
 			try {
-				if (isset($_POST['search'])) {
-					$search=$_POST['search'];
+				if (isset($_GET['search'])) {
+					$search=$_GET['search'];
 					$keywords=explode(' ', $search);
 					$req = "SELECT * FROM utilisateur WHERE 0";
 					foreach($keywords as $keyword) {

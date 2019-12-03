@@ -69,6 +69,10 @@ section h1 {
   font-weight: normal;
 }
 
+#conversation a {
+	color:black;
+}
+
 #conversation > * > .utilisateur {
   float:left;
   opacity: .40;

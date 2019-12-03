@@ -44,7 +44,7 @@ try {
   $gestion->execute();
   $gestion->closeCursor();
 
-  header('Location:../view/accueil/Accueil_admin.php?success=delete'); //données mise à jour
+  header('Location:../view/accueil/Accueil_admin.php?success=delete_user'); //données mise à jour
   exit;
 }
 catch(Exception $e)

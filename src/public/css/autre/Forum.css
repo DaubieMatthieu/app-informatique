@@ -95,16 +95,23 @@ section nav button {
   border-radius: 8px;
 }
 
-#sujets .sujet {
+#sujets > .sujet {
   width: 100%;
   border-bottom: 1px black solid;
+	display:flex;
+	justify-content:flex-start;
+	align-items: center;
 }
 
-#sujets .sujet:last-child {
+#sujets > .sujet:last-child {
   border:none;
 }
 
-#sujets .sujet button {
+#sujets > .sujet > a{
+	 width:100%;
+}
+
+#sujets > .sujet > a button {
   width: 100%;
   padding: 20px;
   background-color: transparent;
@@ -113,17 +120,32 @@ section nav button {
   cursor: pointer;
 }
 
-#sujets .sujet h3 {
+#sujets > .sujet > a h3 {
   font-weight: normal;
 }
 
-#sujets .sujet .utilisateur {
+#sujets > .sujet > a .utilisateur {
   float:left;
   color: #606060;
 }
-#sujets .sujet .date {
+#sujets > .sujet > a .date {
   float:right;
   color: #606060;
+}
+
+#sujets > .sujet > .delete {
+	height: 100%;
+}
+
+#sujets > .sujet > .delete button {
+	outline: none;
+	width: 20px;
+	height: 20px;
+	border:none;
+	cursor: pointer;
+	margin-left: 10px;
+	margin-right: 10px;
+	background-image: url('../../images/delete.jpg');
 }
 
 :root {
@@ -202,6 +224,85 @@ section nav button {
 }
 
 #new_subject_form input[type=submit].confirm:hover {
+    background-color: white;
+    color: var(--delete_color);
+    border-color: var(--delete_color);
+}
+
+/*fomulaire de suppression d'utilisateur*/
+
+#delete_form {
+	width: 100%;
+	height:100%;
+	z-index:2;
+	position:absolute;
+	top:0;
+	bottom:0;
+	left: 0;
+	right: 0;
+	margin: auto;
+	display: flex;
+	visibility: hidden;
+	opacity: 0;
+  transition: visibility 0.3s, opacity 0.3s linear;
+	background-color:rgba(255,255,255,0.5);
+}
+
+#delete_form form {
+	position:relative;
+	margin:auto;
+  width:400px;
+  padding: 29px;
+  border: 1px solid #f1f1f1;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+	background-color: white;
+}
+
+#delete_form h1{
+  width: 38%;
+  margin: 0 auto;
+  padding-bottom: 10px;
+  text-align: center;
+}
+
+#delete_form label {
+	float: left;
+  display: block;
+  width: 200px;
+}
+
+#delete_form input[type=text], #delete_form input[type=email], #delete_form input[type=number]{
+  border: 0;
+  background-color: inherit;
+	width: 200Px;
+}
+
+#delete_form input[type=submit], #delete_form input[type=button]{
+		outline: none;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 2px;
+    border: none;
+    cursor: pointer;
+    width: 196px;
+    border: 1px solid white;
+}
+
+#delete_form input[type=button].cancel {
+  background-color: var(--cancel_color);
+}
+
+#delete_form input[type=button].cancel:hover {
+  background-color: white;
+  color: var(--cancel_color);
+  border-color: var(--cancel_color);
+}
+
+#delete_form input[type=submit].confirm {
+  background-color: var(--delete_color);
+}
+
+#delete_form input[type=submit].confirm:hover {
     background-color: white;
     color: var(--delete_color);
     border-color: var(--delete_color);

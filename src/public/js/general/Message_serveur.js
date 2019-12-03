@@ -51,8 +51,9 @@ function get_message(message_get) {
       message_color='red';
     }
     if (key == 'success') {
-      if (message_get['success'] == 'edit') {message_text='Utilisateur modifié';}
-      if (message_get['success'] == 'delete') {message_text='Utilisateur supprimé';}
+      if (message_get['success'] == 'edit_user') {message_text='Utilisateur modifié';}
+      if (message_get['success'] == 'delete_user') {message_text='Utilisateur supprimé';}
+      if (message_get['success'] == 'delete_subject') {message_text='Sujet supprimé';}
       if (message_get['success'] == 'register') {message_text='Profil créé';}
       if (message_get['success'] == 'pre_register') {message_text='Utilisateur pré-inscrit';}
       if (message_get['success'] == 'data_update') {message_text='Données mises à jour';}
