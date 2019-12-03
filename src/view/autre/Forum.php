@@ -17,7 +17,7 @@
 		<?php include("../general/Header.php"); ?>
 
 		<?php
-    if (!isset($_SESSION['id_utilisateur'])) {header('Location:../loggedout/Connexion.php');exit;} else {$id_utilisateur=$_SESSION['id_utilisateur'];}
+		if (!isset($_SESSION['role'])) {$role='U';} else {$role=$_SESSION['role'];}
     ?>
 
 		<!--section messages serveur-->
@@ -32,7 +32,7 @@
 
 			<nav>
 				<h1> Forum </h1></br>
-				<form method="post" action="Forum_admin.php">
+				<form method="post" action="Forum.php">
 					<input type="search" name="search" autocomplete="off" placeholder="Rechercher un sujet" size="64" maxlength="64"/>
 				</form><br>
 				<button type='button' id='new_subject' onclick='show_new_subject_form()'>Nouveau sujet</button>
@@ -80,7 +80,7 @@
 								$id_sujet=$sujet['id_sujet'];
 								?>
 	              <div class='sujet'>
-	                <a href="Forum_sujet_admin.php?id_sujet=<?php echo $id_sujet;?>"><button>
+	                <a href="Forum_sujet.php?id_sujet=<?php echo $id_sujet;?>"><button>
 	                  <?php
 	                  try {
 	                    $id_utilisateur=$sujet['id_utilisateur'];
@@ -108,7 +108,7 @@
 	                ?>
 								</button></a>
 								<?php
-								if ($_SESSION['role']=='A') {
+								if ($role=='A') {
 									?>
 									<div class="delete"><button onclick="show_delete_form(<?php echo "$id_sujet".','."'$titre_sujet'".','."'$date_creation_sujet'".','."'$prenom'".','."'$nom'" ; ?>)"></button></div>
 									<?php
@@ -145,7 +145,7 @@
 
 
 		<?php
-		if ($_SESSION['role']=='A') {
+		if ($role=='A') {
 			?>
 			<div id="delete_form">
 				<form action="../../controller/admin_delete_subject.php" method="POST">
