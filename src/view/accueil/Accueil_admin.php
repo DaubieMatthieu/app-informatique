@@ -7,6 +7,11 @@
 		<title> Gérer les utilisateurs </title>
 	</head>
 
+	<?php
+	include("../../controller/session_start.php");//on ouvre la session de l'utilisateur
+	reserved('Administrateur');//cette page est réservée aux administrateurs, ono vérifie que l'utilisateur en est un
+	?>
+
 	<body>
 
 		<?php include("../general/Header.php"); ?>

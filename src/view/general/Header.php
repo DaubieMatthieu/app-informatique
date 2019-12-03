@@ -1,7 +1,3 @@
-<?php
-session_start();
-?>
-
 <!DOCTYPE html>
 <html>
 	<head>
@@ -25,7 +21,7 @@ session_start();
 				if ($role=="Utilisateur") {$accueil="../accueil/Accueil_utilisateur.php";}
 				//si la variable $role n'a pas été défini, la session est mal définie, on lui demande donc de se reconnecter
 				if ($role=='error') {header('Location:../loggedout/Connexion?error=5.php');exit;}
-				echo '<li id="menu">'.$role.'<ul>';//début du menu déroulant
+				echo '<li id="menu">'.$_SESSION['prenom'].' '.$_SESSION['nom'].'<ul>';//début du menu déroulant
 				//variation en fonction de la page demandé
 				if(basename($_SERVER['PHP_SELF']) =='Profil.php') {echo '<li><a href='.$accueil.'>Accueil</a></li>';}
 				else {echo '<li><a href="../autre/Profil.php">Profil</a></li>';}
