@@ -133,10 +133,6 @@ section nav button {
   color: #606060;
 }
 
-#sujets > .sujet > .delete {
-	height: 100%;
-}
-
 #sujets > .sujet > .delete button {
 	outline: none;
 	width: 20px;
