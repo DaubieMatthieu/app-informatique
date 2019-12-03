@@ -12,7 +12,7 @@ function reserved($role) {
   if ($role!==char_to_str($_SESSION['role'])) {
     echo "<h1 style='text-align:center;'>Cette page est réservée aux ".strtolower($role)."s, vous allez être redirigé vers la page de connexion</h1>";
     ?><script>
-    //setTimeout(function(){document.location.href="../../view/loggedout/Connexion.php"; ;},7000);
+    setTimeout(function(){document.location.href="../../view/loggedout/Connexion.php"; ;},7000);
     </script><?php
     exit();
   }
