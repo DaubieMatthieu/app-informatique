@@ -1,0 +1,111 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="public/css/home/home.css">
+        <title>Bienvenue sur infiniteSense</title>
+        <meta charset="UTF-8">
+	      <script defer type="text/javascript" src="public/js/home/home.js"></script>
+    </head>
+
+    <body>
+
+    <div class="topnav" id="myTopnav">
+      <a href="#home" class="active navbar-logo">Accueil</a>
+      <a href="#who">Qui somme nous ?</a>
+      <a href="#process">Déroulement</a>
+      <a href="#about">Plus d'info</a>
+    <button class="topnav-right"  onclick="document.getElementById('id01').style.display='block'">Login</button>
+      <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        <i class="fa fa-bars"></i>
+      </a>
+    </div>
+
+    <div class="hero-image border-div hero-img1 fadeIn">
+      <div class="hero-text">
+        <h1>Qui somme nous ?</h1>
+        <p>InfiniteSense est une plateforme de gestion de test psychotechnique.</p>
+        <button onclick="location.href='#who';">En savoir plus</button>
+      </div>
+    </div>
+    <div class="hero-image border-div hero-img2 fadeIn">
+      <div class="hero-text">
+        <h1>Comment ça se passe ?</h1>
+        <p>infiniteSense propose une plateforme novatrice et ergonomique.</p>
+        <button onclick="location.href='#process';">En savoir plus</button>
+      </div>
+    </div>
+    <div class="hero-image border-div hero-img3 fadeIn">
+      <div class="hero-text">
+        <h1>Again an image</h1>
+        <p>Click to smooth scroll</p>
+        <button>Scroll to the void</button>
+      </div>
+    </div>
+
+    <!-- The Modal -->
+  <div id="id01" class="modal-login">
+    <span onclick="document.getElementById('id01').style.display='none'"
+  class="close" title="Close Modal">&times;</span>
+
+
+
+
+
+  <!-- Modal Content -->
+  <form class="modal-content animate" action="/action_page.php">
+    <div class="imgcontainer">
+      <img src="ressources/img/synthwave.jpg" alt="Avatar" class="avatar">
+    </div>
+
+    <div class="container">
+      <label for="uname"><b>Nom d'utilisateur</b></label>
+      <input type="text" placeholder="Nom d'utilisateur" name="uname" required>
+
+      <label for="psw"><b>Mot de passe</b></label>
+      <input type="password" placeholder="Mot de passe" name="psw" required>
+
+      <button type="submit">Login</button>
+      <label>
+        <input type="checkbox" checked="checked" name="remember"> Se souvenir de moi ?
+      </label>
+    </div>
+
+    <div class="container" style="background-color:#f1f1f1">
+      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+      <span class="psw"><a href="#">Mot de passe</a> oublié</span>
+    </div>
+  </form>
+</div>
+
+<div class="whoIs parralexed back-stock1 border-div" id="who" style="position: relative">
+  <div class="info-div">
+    <h1> InfiniteSense c'est quoi ? </h1>
+    <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
+  </div>
+</div>
+
+<div class="timeline-container parralexed back-stock2 border-div" id="process" style="height: 500px">
+  <div class="timeline">
+ <div class="tcontainer left">
+   <div class="content">
+     <h2>2017</h2>
+     <p>Lorem ipsum..</p>
+   </div>
+ </div>
+ <div class="tcontainer right">
+   <div class="content">
+     <h2>2016</h2>
+     <p>Lorem ipsum..</p>
+   </div>
+  </div>
+</div>
+</div>
+
+<div style="height: 500px">
+  </br><a href='view/loggedout/Connexion.php'>Connexion</a>
+</div>
+
+
+</body>
+
+</html>
