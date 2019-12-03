@@ -11,7 +11,7 @@ session_start();
 
 	<header>
 		<ul id="deroulant">
-			<li><a href="../../Index.php">InfiniteSense</a></li>
+			<li><a href="../../index.html">InfiniteSense</a></li>
 			<li><a href="../autre/Faq.php">Faq</a></li>
 			<li><a href="../autre/Forum.php">Forum</a></li>
 
