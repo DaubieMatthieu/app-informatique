@@ -126,7 +126,7 @@
 
 			<?php
 			if ($id_utilisateur==0) {
-				?><button type='button' id='new_message' onclick="document.location.href='../../view/loggedout/Connexion.php'">Répondre</button><?php
+				?><button type='button' id='new_message' onclick="show_connexion_form()">Répondre</button><?php
 			} else {
 				?><button type='button' id='new_message' onclick='show_new_message_form()'>Répondre</button><?php
 			}
@@ -177,6 +177,8 @@
 			<?php
 		}
 		?>
+
+		<?php include('../general/Connexion_form.html');?>
 
 		<?php include("../general/Footer.php"); ?>
 

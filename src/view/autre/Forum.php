@@ -17,6 +17,7 @@
 		<?php include("../general/Header.php"); ?>
 
 		<?php
+    if (!isset($_SESSION['id_utilisateur'])) {$id_utilisateur=0;} else {$id_utilisateur=$_SESSION['id_utilisateur'];}
 		if (!isset($_SESSION['role'])) {$role='U';} else {$role=$_SESSION['role'];}
     ?>
 
@@ -35,7 +36,16 @@
 				<form method="post" action="Forum.php">
 					<input type="search" name="search" autocomplete="off" placeholder="Rechercher un sujet" size="64" maxlength="64"/>
 				</form><br>
-				<button type='button' id='new_subject' onclick='show_new_subject_form()'>Nouveau sujet</button>
+
+				<?php
+				if ($id_utilisateur==0) {
+					?><button type='button' id='new_message' onclick="show_connexion_form()">Répondre</button><?php
+				} else {
+					?><button type='button' id='new_message' onclick='show_new_subject_form()'>Répondre</button><?php
+				}
+				?>
+
+
 			</nav>
 
 			<!--section affichage tableau des utilisateurs-->
@@ -174,6 +184,8 @@
 			<?php
 		}
 		?>
+
+		<?php include('../general/Connexion_form.html');?>
 
 		<?php include("../general/Footer.php"); ?>
 
