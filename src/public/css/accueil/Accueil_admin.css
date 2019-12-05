@@ -215,16 +215,15 @@ section table .edit_button
 }
 
 #delete_form label {
-  display: inline-block;
-  width:120px;
-  margin-left:100px;
+	float: left;
+  display: block;
+  width: 200px;
 }
 
 #delete_form input[type=text], #delete_form input[type=email], #delete_form input[type=number]{
-    display: inline-block;
-    margin: 8px 0;
-    border: 0;
-    background-color: inherit;
+	border: 0;
+	background-color: inherit;
+	width: 200Px;
 }
 
 #delete_form input[type=submit], #delete_form input[type=button]{

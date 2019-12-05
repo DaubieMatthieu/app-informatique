@@ -177,7 +177,7 @@
 					<input type="text" name="nom" readonly="readonly" required>
 					<br><br>
 					<p style="color:#59adde;text-align:center;">Voulez-vous vraiment supprimer ce sujet ?</p>
-					<br><br>
+					<br>
 					<input type="submit" class='confirm' value='Valider'><input type='button' class='cancel' value='Annuler' onclick="hide_delete_form()">
 				</form>
 			</div>
