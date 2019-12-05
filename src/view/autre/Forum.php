@@ -39,9 +39,9 @@
 
 				<?php
 				if ($id_utilisateur==0) {
-					?><button type='button' id='new_message' onclick="show_connexion_form()">Répondre</button><?php
+					?><button type='button' id='new_message' onclick="show_connexion_form()">Nouveau</button><?php
 				} else {
-					?><button type='button' id='new_message' onclick='show_new_subject_form()'>Répondre</button><?php
+					?><button type='button' id='new_message' onclick='show_new_subject_form()'>Nouveau</button><?php
 				}
 				?>
 
