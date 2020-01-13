@@ -7,6 +7,11 @@
 		<title> Gérer les utilisateurs </title>
 	</head>
 
+	<?php
+	include("../../controller/session_start.php");//on ouvre la session de l'utilisateur
+	reserved('Administrateur');//cette page est réservée aux administrateurs, ono vérifie que l'utilisateur en est un
+	?>
+
 	<body>
 
 		<?php include("../general/Header.php"); ?>
@@ -23,7 +28,7 @@
 
 			<nav>
 				<h1> Gérer les utilisateurs </h1></br>
-				<form method="post" action="Accueil_admin.php">
+				<form method="get" action="Accueil_admin.php">
 					<input type="search" name="search" autocomplete="off" placeholder="Rechercher un utilisateur" size="64" maxlength="64"/>
 				</form><br>
 				<button type='button' class='pre_register_button' onclick='show_pre_register_form()'>Pré-inscription</button>
@@ -41,8 +46,8 @@
 			}
 
 			try {
-				if (isset($_POST['search'])) {
-					$search=$_POST['search'];
+				if (isset($_GET['search'])) {
+					$search=$_GET['search'];
 					$keywords=explode(' ', $search);
 					$req = "SELECT * FROM utilisateur WHERE 0";
 					foreach($keywords as $keyword) {
@@ -126,15 +131,16 @@
 
 				<label><b>Id :</b></label>
 				<input type="number" name="id_utilisateur" readonly='readonly' required>
+				<br><br>
 				<label><b>Prénom :</b></label>
 				<input type="text" name="prenom" readonly="readonly" required>
-				<br>
+				<br><br>
 				<label><b>Nom :</b></label>
 				<input type="text" name="nom" readonly="readonly" required>
-				<br>
+				<br><br>
 				<label><b>Email :</b></label>
 				<input type="email" name="adresse_mail" readonly="readonly" required>
-				<br>
+				<br><br>
 				<label><b>Rôle :</b></label>
 				<input type="text" name="role" readonly="readonly" required>
 				<br><br>

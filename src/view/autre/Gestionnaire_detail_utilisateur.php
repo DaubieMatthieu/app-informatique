@@ -6,6 +6,11 @@
 		<title> Détail utilisateur </title>
 	</head>
 
+	<?php
+	include("../../controller/session_start.php");//on ouvre la session de l'utilisateur
+	reserved('Gestionnaire');//cette page est réservée aux gestionnaires, ono vérifie que l'utilisateur en est un
+	?>
+
 	<body>
 
 		<?php include("../general/Header.php"); ?>

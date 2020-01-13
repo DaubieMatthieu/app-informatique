@@ -55,7 +55,7 @@ try {
   $gestion->bindValue(':changement_utilisateur',$changement_utilisateur, PDO::PARAM_STR);
   $gestion->execute();
   $gestion->closeCursor();
-  header('Location:../view/accueil/Accueil_admin.php?success=edit'); //données mise à jour
+  header('Location:../view/accueil/Accueil_admin.php?success=edit_user'); //données mise à jour
   exit;
 }
 catch(Exception $e)

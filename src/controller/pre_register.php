@@ -1,27 +1,35 @@
 <?php
 session_start();
 
-if(!isset($_POST['adresse_mail']) || !isset($_POST['id_entite']) || !isset($_SESSION['role']))
+if (!isset($_SESSION['role'])) {
+  header('Location: ../view/loggedout/Connexion.php?error=5'); //erreur session
+}
+
+$role_logger = htmlspecialchars($_SESSION['role']);
+
+if ($role_logger=='A') {$redirection="../view/accueil/Accueil_admin.php";}
+if ($role_logger=='G') {$redirection="../view/accueil/Accueil_gestionnaire.php";}
+
+if(!isset($_POST['adresse_mail']) || !isset($_POST['id_entite']))
 {
-  header('Location: ../view/accueil/Accueil_gestionnaire.php?error=1.1'); //echec de l'envoi du formulaire
+  header('Location: '.$redirection.'?error=1.1'); //echec de l'envoi du formulaire
   exit;
 }
 // connexion à la base de données
 include('../model/db_connect.php');
 $db = db_connect();
 if ($db===false) {
-  header('Location:../view/accueil/Accueil_gestionnaire.php?error=0');
+  header('Location: '.$redirection.'?error=0');
   exit;
 }
 
 $adresse_mail = htmlspecialchars($_POST['adresse_mail']);
 $id_entite = htmlspecialchars($_POST['id_entite']);
-$role_logger = htmlspecialchars($_SESSION['role']);
 $id_logger = htmlspecialchars($_SESSION['id_utilisateur']);
 
 if($adresse_mail == "" || $id_entite == "" || $role_logger == "") //vérification des données envoyées
 {
-   header('Location: ../view/accueil/Accueil_gestionnaire.php?error=1.2'); // donnée(s) manquante(s)
+   header('Location: '.$redirection.'?error=1.2'); // donnée(s) manquante(s)
    exit;
 }
 
@@ -33,13 +41,13 @@ try {
 }
 catch(Exception $e)
 {
-  header('Location:../view/accueil/Accueil_gestionnaire.php?error=2.1'); //erreur serveur
+  header('Location:'.$redirection.'?error=2.1'); //erreur serveur
   exit;
 }
 
 if($check->rowCount() !== 0)  // adresse mail utilisée
 {
-  header('Location:../view/accueil/Accueil_gestionnaire.php?error=4'); // adresse mail déjà utilisée
+  header('Location:'.$redirection.'?error=4'); // adresse mail déjà utilisée
   exit;
 }
 
@@ -67,14 +75,12 @@ try {
   $gestion->execute();
   $gestion->closeCursor();
 
-  if ($role_logger=='A') {header('Location:../view/accueil/Accueil_admin.php?success=pre_register');} //gestionnaire pre_enregistré
-  if ($role_logger=='G') {header('Location:../view/accueil/Accueil_gestionnaire.php?success=pre_register');} //utilisateur pre_enregistré
+  header('Location:'.$redirection.'?success=pre_register'); //utilisateur pre_enregistré
   exit;
 }
 catch(Exception $e)
 { //echec de l'insertion des données
-  if ($role_logger=='A') {header('Location:../view/accueil/Accueil_admin.php?error=2.2');}
-  if ($role_logger=='G') {header('Location:../view/accueil/Accueil_gestionnaire.php?error=2.2');}
+  header('Location:'.$redirection.'?error=2.2');
   exit;
 }
 
