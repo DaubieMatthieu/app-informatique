@@ -7,6 +7,10 @@
 		<title> Profil </title>
 	</head>
 
+	<?php
+	include("../../controller/session_start.php");//on ouvre la session de l'utilisateur
+	?>
+
 	<body>
 
 		<?php include("../general/Header.php"); ?>

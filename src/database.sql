@@ -144,23 +144,24 @@ INSERT INTO inscription (id_entite, id_utilisateur) VALUES
 (3, 5);
 
 INSERT INTO question_faq (question, reponse) VALUES
-('J\'ai du mal à dormir, comment Ã§a se fait ?','C\'est trÃ¨s simple Benjamin'),
-('Pourquoi j\'ai des mycoses ?','C\'est trÃ¨s simple Benjamin'),
-('Pourquoi ma vie est nulle ?','C\'est trÃ¨s simple Benjamin');
+('Comment s\'inscrire Ã  un test', 'Un gestionnaire va bientÃ´t rÃ©pondre Ã  votre question'),
+('Ai-je accÃ¨s Ã  mes rÃ©sultats pour une durÃ©e limitÃ©e ?', 'Non, vos rÃ©sultats ne sont pas supprimÃ©s automatiquement du site');
+
 
 INSERT INTO resultat_test (id_gestionnaire, id_utilisateur, id_test, id_boitier, valeur, unite, score, statut, date_resultat) VALUES
 (4, 1, 1, 1, 60, 'bpm', 500, 'F', '2019-10-25 09:30:00'),
 (4, 2, 1, 2, 70, 'bpm', 600, 'F', '2019-10-25 10:30:00'),
 (5, 2, 3, 3, 0.1, 's', 750, 'F', '2019-10-25 11:30:00'),
-(5, 3, 2, 4, 40, '°C', 500, 'F', '2019-10-25 12:30:00'),
+(5, 3, 2, 4, 40, 'Â°C', 500, 'F', '2019-10-25 12:30:00'),
 (5, 3, 3, 5, 0.2, 's', 630, 'F', '2019-10-25 13:30:00');
 
 INSERT INTO `sujet_forum` (id_utilisateur, titre, date_creation_sujet) VALUES
-(6, 'J\'ai du mal Ã  dormir comment Ã§a se fait ?', '2019-11-26 17:16:19'),
-(2, 'Pourquoi ma vie est nulle ?', '2019-11-26 17:17:22');
+(2, 'Ai-je accÃ¨s Ã  mes rÃ©sultats pour une durÃ©e limitÃ©e ?', '2019-12-05 15:54:19'),
+(3, 'Comment s\'inscrire Ã  un test', '2019-12-05 15:58:04');
 
 INSERT INTO `message_forum` (id_sujet, id_utilisateur, message, date_poste) VALUES
-(1, 6, 'J\'ai du mal Ã  dormir comment Ã§a se fait ?', '2019-11-26 17:16:19'),
-(1, 3, 'C\'est trÃ¨s simple Benjamin', '2019-11-26 17:16:48'),
-(2, 2, 'Pourquoi ma vie est nulle ?', '2019-11-26 17:17:22'),
-(2, 3, 'C\'est trÃ¨s simple Benjamin', '2019-11-26 17:17:43');
+(1, 4, 'Non, vos donnÃ©es ne sont pas supprimÃ©s automatiquement.', '2019-12-05 15:56:43'),
+(1, 2, 'Bonjour Ã  tous, je voulais savoir si mes donnÃ©es Ã©taient supprimÃ©s automatiquement au bout d\'un certain temps.', '2019-12-05 15:54:19'),
+(2, 3, 'Bonjour, je ne trouve pas de section pour s\'inscrire Ã  un test dans mon espace client, comment faut-il faire ?', '2019-12-05 15:58:04'),
+(2, 2, 'Bonsoir, je ne trouve pas non plus et je dois passer un test pour mon permis la semaine prochaine, quelqu\'un peut il nous rÃ©pondre rapidement ?', '2019-12-05 19:00:47'),
+(2, 6, 'Bonsoir, votre question a Ã©tÃ© prise en compte et un gestionnaire va vous rÃ©pondre prochainement.', '2019-12-05 19:02:50');

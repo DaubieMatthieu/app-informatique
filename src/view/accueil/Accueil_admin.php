@@ -7,6 +7,11 @@
 		<title> Gérer les utilisateurs </title>
 	</head>
 
+	<?php
+	include("../../controller/session_start.php");//on ouvre la session de l'utilisateur
+	reserved('Administrateur');//cette page est réservée aux administrateurs, ono vérifie que l'utilisateur en est un
+	?>
+
 	<body>
 
 		<?php include("../general/Header.php"); ?>
@@ -126,15 +131,16 @@
 
 				<label><b>Id :</b></label>
 				<input type="number" name="id_utilisateur" readonly='readonly' required>
+				<br><br>
 				<label><b>Prénom :</b></label>
 				<input type="text" name="prenom" readonly="readonly" required>
-				<br>
+				<br><br>
 				<label><b>Nom :</b></label>
 				<input type="text" name="nom" readonly="readonly" required>
-				<br>
+				<br><br>
 				<label><b>Email :</b></label>
 				<input type="email" name="adresse_mail" readonly="readonly" required>
-				<br>
+				<br><br>
 				<label><b>Rôle :</b></label>
 				<input type="text" name="role" readonly="readonly" required>
 				<br><br>
