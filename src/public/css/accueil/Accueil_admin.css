@@ -414,3 +414,14 @@ section table .edit_button
     color: var(--delete_color);
     border-color: var(--delete_color);
 }
+
+@media screen and (max-width: 768px) {
+
+  section table thead th:nth-child(1), section table thead th:nth-child(2), section table thead th:nth-child(4), section table tbody td:nth-child(1), section table tbody td:nth-child(2), section table tbody td:nth-child(4) {
+		display: none;
+	}
+
+	section nav form {
+		width: 80%;
+	}
+}

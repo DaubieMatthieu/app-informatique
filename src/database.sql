@@ -9,6 +9,7 @@ DROP TABLE IF EXISTS resultat_test;
 DROP TABLE IF EXISTS gestion_utilisateur;
 DROP TABLE IF EXISTS question_faq;
 DROP TABLE IF EXISTS inscription;
+DROP TABLE IF EXISTS pre_inscription;
 DROP TABLE IF EXISTS boitier_capteur;
 DROP TABLE IF EXISTS entite;
 DROP TABLE IF EXISTS test;
@@ -47,6 +48,15 @@ CREATE TABLE inscription(
 	id_utilisateur INT NOT NULL,
 	CONSTRAINT fk_inscription_entite FOREIGN KEY (id_entite) REFERENCES entite(id_entite),
 	CONSTRAINT fk_inscription_utilisateur FOREIGN KEY (id_utilisateur) REFERENCES utilisateur(id_utilisateur)
+);
+
+CREATE TABLE pre_inscription(
+	id_pre_inscription INT AUTO_INCREMENT PRIMARY KEY,
+	adresse_mail VARCHAR(50) NOT NULL UNIQUE,
+	token VARCHAR(50) NOT NULL,
+	role CHAR NOT NULL,
+	id_entite INT NOT NULL,
+	CONSTRAINT fk_pre_inscription_entite FOREIGN KEY (id_entite) REFERENCES entite(id_entite)
 );
 
 CREATE TABLE question_faq(

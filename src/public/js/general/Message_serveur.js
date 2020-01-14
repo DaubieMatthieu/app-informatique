@@ -47,7 +47,7 @@ function get_message(message_get) {
       if (message_get['error'] == 5) {message_text='Erreur session';}
       if (message_get['error'] == 6) {message_text='Conversation indisponible';}
       if (message_get['error'] == 7) {message_text='Sujet déjà existant';}
-      if (message_get['error'] == 8) {message_text='adresse mail non pré-enregistré';}
+      if (message_get['error'] == 8) {message_text='adresse mail non pré-enregistré ou token invalide';}
       message_color='red';
     }
     if (key == 'success') {

@@ -20,6 +20,8 @@
 		<?php
 		$adresse_mail='';
 		if (isset($_GET['adresse_mail'])) {$adresse_mail=$_GET['adresse_mail'];}
+		$token='';
+		if (isset($_GET['token'])) {$token=$_GET['token'];}
 		?>
 
 		<section>
@@ -36,6 +38,9 @@
 
 							<label><b>Email</b></label>
 							<input type="email" placeholder="Entrer votre adresse mail" name="adresse_mail" value='<?php echo $adresse_mail; ?>' required>
+
+							<label><b>Token</b></label>
+							<input type="text" placeholder="Entrer votre token" name="token" value='<?php echo $token; ?>' required>
 
 							<label><b>Mot de passe</b></label>
 							<input type="password" placeholder="Entrer votre mot de passe" name="mot_de_passe" autocomplete="new-password" minlength="5" required>

@@ -52,31 +52,20 @@ if($check->rowCount() !== 0)  // adresse mail utilisée
 }
 
 try {
-  $req = $db->prepare("INSERT INTO utilisateur(`adresse_mail`, `role`) VALUES (:adresse_mail, :role)");
+  $token = base_convert(hash('sha256', time() . mt_rand()), 16, 36);
+  //génération du token
+  $req = $db->prepare("INSERT INTO pre_inscription(`adresse_mail`, `token`,`role`,`id_entite`) VALUES (:adresse_mail, :token, :role, :id_entite)");
   $req->bindValue(':adresse_mail', $adresse_mail, PDO::PARAM_STR);
+  $req->bindValue(':token',$token,PDO::PARAM_STR);
   if ($role_logger=='A') {$role='G';}
   if ($role_logger=='G') {$role='U';}
   $req->bindValue(':role', $role, PDO::PARAM_STR);
+  $req->bindValue(':id_entite', $id_entite, PDO::PARAM_STR);
   $req->execute();
   $req->closeCursor();
-
-  $id_utilisateur = $db->lastInsertId();
-  $req2 = $db->prepare("INSERT INTO inscription(`id_entite`, `id_utilisateur`) VALUES (:id_entite, :id_utilisateur)");
-  $req2->bindValue(':id_entite', $id_entite, PDO::PARAM_STR);
-  $req2->bindValue(':id_utilisateur', $id_utilisateur, PDO::PARAM_STR);
-  $req2->execute();
-  $req2->closeCursor();
-
-  $changement_utilisateur = "Pré-inscription de l'utilisateur d'id:".$id_utilisateur." et d'adresse mail:".$adresse_mail;
-  $gestion = $db->prepare("INSERT INTO `gestion_utilisateur`(`id_admin`, `id_utilisateur`, `action`, `date_gestion`, `changement_utilisateur`) VALUES (:id_logger,:id_utilisateur,'R',NOW(),:changement_utilisateur)");
-  $gestion->bindValue(':id_logger',$id_logger, PDO::PARAM_INT);
-  $gestion->bindValue(':id_utilisateur',$id_utilisateur, PDO::PARAM_INT);
-  $gestion->bindValue(':changement_utilisateur',$changement_utilisateur, PDO::PARAM_STR);
-  $gestion->execute();
-  $gestion->closeCursor();
-
   header('Location:'.$redirection.'?success=pre_register'); //utilisateur pre_enregistré
   exit;
+  //TODO ajouter envoie du mail contenant le token
 }
 catch(Exception $e)
 { //echec de l'insertion des données
