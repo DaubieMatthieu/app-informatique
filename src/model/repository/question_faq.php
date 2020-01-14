@@ -1,5 +1,4 @@
 <?php
-include('generic_repository.php');
 
 /**
  * Recherche une question de FAQ en fonction de l'ID passé en paramètre
@@ -14,7 +13,29 @@ function getQuestionByID(PDO $bdd, $id){
     $query->execute();
 
     return $query->fetchAll();
+}
 
+/**
+ * Recherche une question de FAQ en fonction des paramètres
+ * @param PDO $bdd
+ * @param array $params
+ * @return array
+ */
+function getQuestionByParams(PDO $bdd, array $params){
+    $where = "";
+    foreach($params as $key => $value) {
+        $where .= "$key = :$key" . ", ";
+    }
+    $where = substr_replace($where, '', -2, 2);
+
+    $query = $bdd->prepare('SELECT * FROM question_faq WHERE ' . $where);
+
+    foreach($params as $key => $value) {
+        $query->bindParam(":$key", $value);
+    }
+    $query->execute();
+
+    return $query->fetchAll();
 }
 
 /**

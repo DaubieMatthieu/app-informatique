@@ -1,5 +1,4 @@
 <?php
-include('generic_repository.php');
 
 /**
  * Recherche un test en fonction de l'ID passé en paramètre
@@ -14,7 +13,29 @@ function getTestByID(PDO $bdd, $id){
     $query->execute();
 
     return $query->fetchAll();
+}
 
+/**
+ * Recherche un test en fonction des paramètres
+ * @param PDO $bdd
+ * @param array $params
+ * @return array
+ */
+function getTestByParams(PDO $bdd, array $params){
+    $where = "";
+    foreach($params as $key => $value) {
+        $where .= "$key = :$key" . ", ";
+    }
+    $where = substr_replace($where, '', -2, 2);
+
+    $query = $bdd->prepare('SELECT * FROM test WHERE ' . $where);
+
+    foreach($params as $key => $value) {
+        $query->bindParam(":$key", $value);
+    }
+    $query->execute();
+
+    return $query->fetchAll();
 }
 
 /**

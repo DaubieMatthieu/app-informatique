@@ -1,5 +1,4 @@
 <?php
-include('generic_repository.php');
 
 /**
  * Recherche une gestion d'utilisateur en fonction de l'ID passé en paramètre
@@ -14,7 +13,29 @@ function getGestionByID(PDO $bdd, $id){
     $query->execute();
 
     return $query->fetchAll();
+}
 
+/**
+ * Recherche une gestion d'utilisateur en fonction des paramètres
+ * @param PDO $bdd
+ * @param array $params
+ * @return array
+ */
+function getGestionByParams(PDO $bdd, array $params){
+    $where = "";
+    foreach($params as $key => $value) {
+        $where .= "$key = :$key" . ", ";
+    }
+    $where = substr_replace($where, '', -2, 2);
+
+    $query = $bdd->prepare('SELECT * FROM gestion_utilisateur WHERE ' . $where);
+
+    foreach($params as $key => $value) {
+        $query->bindParam(":$key", $value);
+    }
+    $query->execute();
+
+    return $query->fetchAll();
 }
 
 /**
