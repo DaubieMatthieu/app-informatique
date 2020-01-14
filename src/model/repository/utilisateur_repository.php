@@ -18,6 +18,29 @@ function getUtilisateurByID(PDO $bdd, $id){
 }
 
 /**
+ * Recherche un utilisateur en fonction des paramètres
+ * @param PDO $bdd
+ * @param array $params
+ * @return array
+ */
+function getUtilisateurByParams(PDO $bdd, array $params){
+    $where = "";
+    foreach($params as $key => $value) {
+        $where .= "$key = :$key" . ", ";
+    }
+    $where = substr_replace($where, '', -2, 2);
+
+    $query = $bdd->prepare('SELECT * FROM utilisateur WHERE ' . $where);
+
+    foreach($params as $key => $value) {
+        $query->bindParam(":$key", $value);
+    }
+    $query->execute();
+
+    return $query->fetchAll();
+}
+
+/**
  * Récupère tous les enregistrements de la table utilisateur
  * @param PDO $bdd
  * @return array
