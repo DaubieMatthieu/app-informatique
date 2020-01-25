@@ -25,6 +25,11 @@ footer ul li
 	padding-bottom:15px;
 }
 
+footer ul li a{
+	text-decoration: none;
+	color: white;
+}
+
 footer ul li:nth-child(1)
 {
 	width:15%;

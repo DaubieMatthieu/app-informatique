@@ -3,7 +3,6 @@
 	<head>
 		<meta charset="utf-8" />
 		<link rel="stylesheet" href="../../public/css/accueil/Accueil_admin.css">
-		<script src="../../public/js/accueil/Accueil_admin.js"></script>
 		<title> Gérer les utilisateurs </title>
 	</head>
 
@@ -28,6 +27,10 @@
 
 			<nav>
 				<h1> Gérer les utilisateurs </h1></br>
+				<div class="other-back-office">
+					<a href="../autre/modif_cgu_view.php">Gérer les CGU</a>
+					<a href="../autre/modif_mentionslgls_view.php">Gérer les Mentions légales</a>
+				</div>
 				<form method="get" action="Accueil_admin.php">
 					<input type="search" name="search" autocomplete="off" placeholder="Rechercher un utilisateur" size="64" maxlength="64"/>
 				</form><br>

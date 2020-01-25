@@ -17,6 +17,23 @@ section nav h1
 	font-size:30px;
 }
 
+.other-back-office{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.other-back-office a{
+	margin: auto;
+	text-align: center;
+	text-decoration: none;
+	color: #59adde;
+}
+
+.other-back-office a:hover{
+	color: navy;
+}
+
 section nav form
 {
 	margin:auto;

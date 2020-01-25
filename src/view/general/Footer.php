@@ -8,8 +8,8 @@
 	<body>
     <footer>
       <ul>
-        <li>CGU</li>
-        <li>A propos</li>
+        <li><a href="../loggedout/CGU.php">CGU</a></li>
+        <li><a href="../loggedout/Mentions_legales.php">Mentions légales</a></li>
         <li>@2019 Kinesense</li>
       </ul>
     </footer>
