@@ -125,7 +125,7 @@ INSERT INTO utilisateur (prenom, nom, adresse_mail, mot_de_passe, role) VALUES
 ('Jean','Jacques','jean.jacques@infinitesense.fr', SHA2('introuvable',256),'U'),
 ('Paul','Pierre','paul.pierre@infinitesense.fr', SHA2('introuvable',256),'U'),
 ('Tom','Pot','tom.pot@infinitesense.fr', SHA2('introuvable',256),'U'),
-('Thierry','GÃ©rard','thierry.gerard@infinitesense.fr', SHA2('introuvable',256),'G'),
+('Thierry','Gérard','thierry.gerard@infinitesense.fr', SHA2('introuvable',256),'G'),
 ('Didier','Robert','didier.robert@infinitesense.fr', SHA2('introuvable',256),'G'),
 ('John','Rambo','john.rambo@infinitesense.fr', SHA2('introuvable',256),'A');
 
@@ -162,7 +162,7 @@ INSERT INTO resultat_test (id_gestionnaire, id_utilisateur, id_test, id_boitier,
 (4, 1, 1, 1, 60, 'bpm', 500, 'F', '2019-10-25 09:30:00'),
 (4, 2, 1, 2, 70, 'bpm', 600, 'F', '2019-10-25 10:30:00'),
 (5, 2, 3, 3, 0.1, 's', 750, 'F', '2019-10-25 11:30:00'),
-(5, 3, 2, 4, 40, 'Â°C', 500, 'F', '2019-10-25 12:30:00'),
+(5, 3, 2, 4, 40, '°C', 500, 'F', '2019-10-25 12:30:00'),
 (5, 3, 3, 5, 0.2, 's', 630, 'F', '2019-10-25 13:30:00');
 
 INSERT INTO `sujet_forum` (id_utilisateur, titre, date_creation_sujet) VALUES
