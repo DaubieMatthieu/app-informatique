@@ -1,4 +1,4 @@
-CREATE DATABASE IF NOT EXISTS infinite_sense;
+CREATE DATABASE IF NOT EXISTS infinite_sense CHARACTER SET utf8;
 
 USE infinite_sense;
 
@@ -130,12 +130,12 @@ INSERT INTO utilisateur (prenom, nom, adresse_mail, mot_de_passe, role) VALUES
 ('John','Rambo','john.rambo@infinitesense.fr', SHA2('introuvable',256),'A');
 
 INSERT INTO test (type_test, description) VALUES
-('FrÃ©quence cardiaque', 'Ã§a sert à mesurer combien ton coeur il bat'),
+('Fréquence cardiaque', 'ça sert à mesurer combien ton coeur il bat'),
 ('Mesure du stress', 'pour savoir comment tu stress'),
-('RÃ©flexes', 'montre comment t\'es rapide');
+('Réflexes', 'montre comment t\'es rapide');
 
 INSERT INTO entite (nom, adresse) VALUES
-('AutoÃ©cole','Pas trop loin'),
+('Autoécole','Pas trop loin'),
 ('Ecole de pilotes','Un peu plus loin là'),
 ('Labo de recherche','Quelque part là-bas');
 
@@ -154,8 +154,8 @@ INSERT INTO inscription (id_entite, id_utilisateur) VALUES
 (3, 5);
 
 INSERT INTO question_faq (question, reponse) VALUES
-('Comment s\'inscrire Ã  un test', 'Un gestionnaire va bientÃ´t rÃ©pondre Ã  votre question'),
-('Ai-je accÃ¨s Ã  mes rÃ©sultats pour une durÃ©e limitÃ©e ?', 'Non, vos rÃ©sultats ne sont pas supprimÃ©s automatiquement du site');
+('Comment s\'inscrire à un test', 'Un gestionnaire va bientôt répondre à votre question'),
+('Ai-je accès à mes résultats pour une durée limitée ?', 'Non, vos résultats ne sont pas supprimés automatiquement du site');
 
 
 INSERT INTO resultat_test (id_gestionnaire, id_utilisateur, id_test, id_boitier, valeur, unite, score, statut, date_resultat) VALUES
@@ -166,12 +166,12 @@ INSERT INTO resultat_test (id_gestionnaire, id_utilisateur, id_test, id_boitier,
 (5, 3, 3, 5, 0.2, 's', 630, 'F', '2019-10-25 13:30:00');
 
 INSERT INTO `sujet_forum` (id_utilisateur, titre, date_creation_sujet) VALUES
-(2, 'Ai-je accÃ¨s Ã  mes rÃ©sultats pour une durÃ©e limitÃ©e ?', '2019-12-05 15:54:19'),
-(3, 'Comment s\'inscrire Ã  un test', '2019-12-05 15:58:04');
+(2, 'Ai-je accès à mes résultats pour une durée limitée ?', '2019-12-05 15:54:19'),
+(3, 'Comment s\'inscrire à un test', '2019-12-05 15:58:04');
 
 INSERT INTO `message_forum` (id_sujet, id_utilisateur, message, date_poste) VALUES
-(1, 4, 'Non, vos donnÃ©es ne sont pas supprimÃ©s automatiquement.', '2019-12-05 15:56:43'),
-(1, 2, 'Bonjour Ã  tous, je voulais savoir si mes donnÃ©es Ã©taient supprimÃ©s automatiquement au bout d\'un certain temps.', '2019-12-05 15:54:19'),
-(2, 3, 'Bonjour, je ne trouve pas de section pour s\'inscrire Ã  un test dans mon espace client, comment faut-il faire ?', '2019-12-05 15:58:04'),
-(2, 2, 'Bonsoir, je ne trouve pas non plus et je dois passer un test pour mon permis la semaine prochaine, quelqu\'un peut il nous rÃ©pondre rapidement ?', '2019-12-05 19:00:47'),
-(2, 6, 'Bonsoir, votre question a Ã©tÃ© prise en compte et un gestionnaire va vous rÃ©pondre prochainement.', '2019-12-05 19:02:50');
+(1, 4, 'Non, vos données ne sont pas supprimés automatiquement.', '2019-12-05 15:56:43'),
+(1, 2, 'Bonjour à tous, je voulais savoir si mes données étaient supprimées automatiquement au bout d\'un certain temps.', '2019-12-05 15:54:19'),
+(2, 3, 'Bonjour, je ne trouve pas de section pour s\'inscrire à un test dans mon espace client, comment faut-il faire ?', '2019-12-05 15:58:04'),
+(2, 2, 'Bonsoir, je ne trouve pas non plus et je dois passer un test pour mon permis la semaine prochaine, quelqu\'un peut il nous répondre rapidement ?', '2019-12-05 19:00:47'),
+(2, 6, 'Bonsoir, votre question a été prise en compte et un gestionnaire va vous répondre prochainement.', '2019-12-05 19:02:50');
