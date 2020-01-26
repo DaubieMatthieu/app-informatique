@@ -45,7 +45,19 @@ catch(Exception $e)
   exit;
 }
 
-if($check->rowCount() !== 0)  // adresse mail utilisée
+try {
+  $check2 = $db->prepare("SELECT id_pre_inscription from pre_inscription where adresse_mail=:adresse_mail");
+  $check2->bindValue(':adresse_mail',$adresse_mail, PDO::PARAM_STR);
+  $check2->execute();
+  $check2->closeCursor();
+}
+catch(Exception $e)
+{
+  header('Location:'.$redirection.'?error=2.1'); //erreur serveur
+  exit;
+}
+
+if($check->rowCount() !== 0 || $check2->rowCount() !== 0)  // adresse mail utilisée
 {
   header('Location:'.$redirection.'?error=4'); // adresse mail déjà utilisée
   exit;
@@ -63,7 +75,13 @@ try {
   $req->bindValue(':id_entite', $id_entite, PDO::PARAM_STR);
   $req->execute();
   $req->closeCursor();
-  header('Location:'.$redirection.'?success=pre_register'); //utilisateur pre_enregistré
+  $sujet="Inscrivez-vous sur InfiniteSense";
+  $texte="Bonjour,\nCliquez sur ce lien pour vous inscrire sur InfiniteSense avec le mail ".$adresse_mail.".\n";
+  $texte=$texte."http://infinitesense.ovh:22233/view/loggedout/Inscription.php?token=".$token;
+  $texte=$texte."Si vous n'avez pas demandé à vous inscrire, vous pouvez ignorer cet e-mail.\nMerci,\nL'équipe InfiniteSense";
+  mail($adresse_mail, $sujet, $texte);
+  echo $texte;
+  //header('Location:'.$redirection.'?success=pre_register'); //utilisateur pre_enregistré
   exit;
   //TODO ajouter envoie du mail contenant le token
 }
