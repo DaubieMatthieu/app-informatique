@@ -80,10 +80,8 @@ try {
   $texte=$texte."http://infinitesense.ovh:22233/view/loggedout/Inscription.php?token=".$token;
   $texte=$texte."Si vous n'avez pas demandé à vous inscrire, vous pouvez ignorer cet e-mail.\nMerci,\nL'équipe InfiniteSense";
   mail($adresse_mail, $sujet, $texte);
-  echo $texte;
-  //header('Location:'.$redirection.'?success=pre_register'); //utilisateur pre_enregistré
+  header('Location:'.$redirection.'?success=pre_register'); //utilisateur pre_enregistré
   exit;
-  //TODO ajouter envoie du mail contenant le token
 }
 catch(Exception $e)
 { //echec de l'insertion des données
