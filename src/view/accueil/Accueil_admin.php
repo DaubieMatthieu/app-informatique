@@ -3,6 +3,7 @@
 	<head>
 		<meta charset="utf-8" />
 		<link rel="stylesheet" href="../../public/css/accueil/Accueil_admin.css">
+		<script src="../../public/js/accueil/Accueil_admin.js"></script>
 		<title> Gérer les utilisateurs </title>
 	</head>
 
