@@ -14,6 +14,7 @@ DROP TABLE IF EXISTS boitier_capteur;
 DROP TABLE IF EXISTS entite;
 DROP TABLE IF EXISTS test;
 DROP TABLE IF EXISTS utilisateur;
+DROP TABLE IF EXISTS contenu_site;
 
 CREATE TABLE utilisateur(
 	id_utilisateur INT AUTO_INCREMENT PRIMARY KEY,
